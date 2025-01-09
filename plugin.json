@@ -12,6 +12,15 @@
         "source": "https://www.69xinshu.com",
         "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69shu/icon.png",
         "description": "Đọc truyện trên trang https://www.69shuba.com"
+      },
+	  {
+        "name": "69yuedu",
+        "author": "HuongMT",
+        "path": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69yuedu/plugin.zip",
+        "version": 11,
+        "source": "https://www.69yuedu.net",
+        "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69yuedu/icon.png",
+        "description": "Đọc truyện trên trang https://www.69yuedu.net"
       }
     ]
   }
