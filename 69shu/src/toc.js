@@ -21,6 +21,8 @@ function execute(url) {
 			})
 		});
 
+        data = data.reverse();
+
 		return Response.success(data);
     }
     return null;
