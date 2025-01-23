@@ -14,13 +14,13 @@
       "description": "Đọc truyện trên trang https://www.69shuba.com"
     },
     {
-      "name": "69yuedu",
+      "name": "Book QQ From nhocconsr",
       "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69yuedu/plugin.zip",
-      "version": 11,
-      "source": "https://www.69yuedu.net",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69yuedu/icon.png",
-      "description": "Đọc truyện trên trang https://www.69yuedu.net"
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/plugin.zip",
+      "version": 1,
+      "source": "https://book.qq.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/icon.png",
+      "description": "Đọc truyện trên trang book.qq.com"
     }
   ]
 }
