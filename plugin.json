@@ -28,7 +28,7 @@
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/plugin.zip",
       "version": 1,
       "source": "https://book.qq.com",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/icon.png",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com",
       "type": "chinese_novel",
       "locale": "zh_CN"
