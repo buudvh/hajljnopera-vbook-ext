@@ -5,13 +5,11 @@ function execute(url) {
         let doc = response.html();
         let novelList = [];
         doc.select('li.list:not([style*="display: none"])').forEach(e => {
-            if(novelList.find(p => p.url == e.attr("href")) == undefined){
-                novelList.push({
-                    name: e.select("span").text(),
-                    url: "https:" + e.select("a").attr("href"),
-                    host: ""
-                });
-            }
+            novelList.push({
+                name: e.select("span").text(),
+                url: "https:" + e.select("a").attr("href"),
+                host: ""
+            });
         });
 
         novelList = novelList.reverse();
