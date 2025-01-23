@@ -14,10 +14,10 @@
       "description": "Đọc truyện trên trang https://www.69shuba.com"
     },
     {
-      "name": "Book QQ From nhocconsr",
+      "name": "Book QQ nhocconsr",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/plugin.zip",
-      "version": 12,
+      "version": 13,
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"

@@ -4,15 +4,16 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let novelList = [];
-        doc.select('li.list:not([style*="display: none"])').forEach(e => {
+        doc.select(".list-a").forEach(e => {
             novelList.push({
                 name: e.select("span").text(),
-                url: "https:" + e.select("a").attr("href"),
+                url: "https:" + e.attr("href"),
                 host: ""
             });
         });
 
         novelList = novelList.reverse();
+        novelList = novelList.slice(-novelList.length/2);
 
         return Response.success(novelList);
     }
