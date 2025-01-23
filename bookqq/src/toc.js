@@ -4,12 +4,14 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let novelList = [];
-        doc.select(".list-a").forEach(e => {
-            novelList.push({
-                name: e.select("span").text(),
-                url: e.attr("href"),
-                host: "http://book.qq.com"
-            })
+        doc.select(".list").forEach(e => {
+            if (e.css("display") !== "none") {
+                novelList.push({
+                    name: e.select("span").text(),
+                    url: e.select("a").attr("href"),
+                    host: "https:"
+                });
+            }
         })
 
         novelList = novelList.reverse();
