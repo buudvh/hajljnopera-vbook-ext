@@ -5,10 +5,10 @@
   },
   "data": [
     {
-      "name": "69shu",
-      "author": "HuongMT(source:hajljnopera)",
+      "name": "69shu (source:hajljnopera)",
+      "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69shu/plugin.zip",
-      "version": 11,
+      "version": 12,
       "source": "https://www.69xinshu.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69shu/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.com"
