@@ -1,6 +1,6 @@
 function execute(url) {
     let bid = url.match(/\d+/)[0];
-    let response = fetch('https://book.qq.com/book-chapter/'+bid);
+    let response = fetch('https://book.qq.com/book-chapter/' + bid);
     if (response.ok) {
         let doc = response.html();
         let novelList = [];
@@ -13,7 +13,7 @@ function execute(url) {
         });
 
         novelList = novelList.reverse();
-        novelList = novelList.slice(-novelList.length/2);
+        novelList = novelList.slice(-novelList.length / 2);
 
         return Response.success(novelList);
     }
