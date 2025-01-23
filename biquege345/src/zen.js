@@ -2,7 +2,7 @@ function execute(url, page) {
     if(!page) page = '1';
     if(url.slice(-1) !== "/")
         url = url + "/";
-	url = url.replace('m.biqugeabc.com', 'www.biqugeabc.com');
+	url = url.replace('m.biquge345.com', 'www.biquge345.com');
     let response = fetch(url+page+".html");
     if (response.ok) {
         let doc = response.html();
@@ -13,7 +13,7 @@ function execute(url, page) {
                 name: e.select(".s2 a").first().text(),
                 link: e.select(".s2 a").first().attr("href"),
                 description: e.select(".s3 a").first().text(),
-                host: "http://www.biqugeabc.com"
+                host: "http://www.biquge345.com"
             })
         });
 

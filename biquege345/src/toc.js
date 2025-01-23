@@ -1,5 +1,5 @@
 function execute(url) {
-	url = url.replace('m.biqugeabc.com', 'www.biqugeabc.com');
+	url = url.replace('m.biquge345.com', 'www.biquge345.com');
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
@@ -10,8 +10,8 @@ function execute(url) {
             var e = el.get(i);
             data.push({
                 name: e.select("a").text(),
-                url:"http://www.biqugeabc.com" + e.attr("href"),
-                host: "http://www.biqugeabc.com"
+                url:"http://www.biquge345.com" + e.attr("href"),
+                host: "http://www.biquge345.com"
             })
         }
         return Response.success(data);

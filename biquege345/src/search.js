@@ -1,5 +1,5 @@
 function execute(key, page) {
-    let response = fetch('https://www.biqugeabc.com/search.html?key='+key);
+    let response = fetch('https://www.biquge345.com/search.html?key='+key);
 
     if (response.ok) {
         let doc = response.html();
@@ -11,7 +11,7 @@ function execute(key, page) {
                     name: name,
                     link: e.select(".s2 a").first().attr("href"),
                     description: e.select(".s3 a").first().text(),
-                    host: "http://www.biqugeabc.com"
+                    host: "http://www.biquge345.com"
                 })
             }
         });
