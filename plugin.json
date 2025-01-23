@@ -21,14 +21,14 @@
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"
-    }
+    },
 	{
       "name": "Biquege345",
       "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/biquege345.zip",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biquege345/biquege345.zip",
       "version": 1,
       "source": "https://www.biquge345.com",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/icon.png",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biquege345/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"
     }
   ]
