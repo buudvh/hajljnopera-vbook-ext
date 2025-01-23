@@ -1,6 +1,6 @@
 function execute(url) {
     let bid = url.match(/\d+/)[0];
-    let response = fetch('https://book.qq.com/book-detail/'+bid);
+    let response = fetch('https://book.qq.com/book-chapter/'+bid);
     if (response.ok) {
         // let json = response.json().data;
         // let novelList = [];
