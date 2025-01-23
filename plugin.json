@@ -30,8 +30,6 @@
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com",
-      "type": "chinese_novel",
-      "locale": "zh_CN"
     }
   ]
 }
