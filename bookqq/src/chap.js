@@ -1,16 +1,8 @@
 function execute(url) {
-    let c = url.split('/');
-    let response = fetch('https://book.qq.com/api/book/read', {
-        method: "GET",
-        queries: {
-            bid : c[4],
-            cid : c.pop()
-        }
-    });
+    let response = fetch(url);
     if (response.ok) {
-        let json = response.json();
-        if(json.data.chapterPrice > 0) let content = 'Chương VIP. Đăng nhập bằng trình duyệt vbook để đăng nhập và mua nhé ^^!'
-        else content = json.data.content;
+        let doc = response.html();
+        let content = $.Q(doc, '#article', { remove: 'script' }).html();
         content = content
             //.replace(/<a[^>]*>([^<]+)<\/a>/g,'')
             .replace(/\r\n/g,'<br>')
