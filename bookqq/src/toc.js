@@ -8,8 +8,8 @@ function execute(url) {
             if(novelList.find(p => p.url == e.attr("href")) == undefined){
                 novelList.push({
                     name: e.select("span").text(),
-                    url: e.attr("href"),
-                    host: "https:"
+                    url: "https:" + e.attr("href"),
+                    host: ""
                 });
             }
         });
