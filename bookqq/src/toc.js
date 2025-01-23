@@ -4,11 +4,11 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html();
         let novelList = [];
-        doc.select(".list-a").forEach(e => {
+        doc.select('li.list:not([style*="display: none"])').forEach(e => {
             if(novelList.find(p => p.url == e.attr("href")) == undefined){
                 novelList.push({
                     name: e.select("span").text(),
-                    url: "https:" + e.attr("href"),
+                    url: "https:" + e.select("a").attr("href"),
                     host: ""
                 });
             }
