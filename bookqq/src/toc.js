@@ -5,7 +5,7 @@ function execute(url) {
         let doc = response.html();
         let novelList = [];
         doc.select(".list-a").forEach(e => {
-            if(novelList.find(e => e.url == e.attr("href")) == undefined){
+            if(novelList.find(p => p.url == e.attr("href")) == undefined){
                 novelList.push({
                     name: e.select("span").text(),
                     url: e.attr("href"),
