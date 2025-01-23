@@ -21,6 +21,17 @@
       "source": "https://www.69yuedu.net",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/69yuedu/icon.png",
       "description": "Đọc truyện trên trang https://www.69yuedu.net"
-    }
+    },
+	{
+        "name": "Book QQ From nhocconsr",
+        "author": "HuongMT",
+        "path": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/bookqq/plugin.zip",
+        "version": 1,
+        "source": "https://book.qq.com",
+        "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/vbook-ext/main/icon.png",
+        "description": "Đọc truyện trên trang book.qq.com",
+        "type": "chinese_novel",
+        "locale": "zh_CN"
+	},
   ]
 }
