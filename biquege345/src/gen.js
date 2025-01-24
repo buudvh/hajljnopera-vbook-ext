@@ -11,7 +11,7 @@ function execute(url, page) {
                     name: e.select("h3.p2 a").first().text() ?? e.select("span.name a").first().text(),
                     link: e.select("h3.p2 a").first().attr("href") ?? e.select("span.name a").first().attr("href"),
                     description: e.select("p.p3").text() ?? '',
-                    host: "http://www.biquge345.com"
+                    host: "https://www.biquge345.com"
                 })
             });
         });
