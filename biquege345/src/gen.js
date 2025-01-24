@@ -7,11 +7,13 @@ function execute(url, page) {
 
         doc.select(".right_border").forEach(rightBorder => {
             rightBorder.select("li").forEach(e => {
+                url = e.select("h3.p2 a").first().attr("href") ?? e.select("span.name a").first().attr("href");
+                if(url.startsWith("/")) url = "https://www.biquge345.com" + url;
                 data.push({
                     name: e.select("h3.p2 a").first().text() ?? e.select("span.name a").first().text(),
-                    link: e.select("h3.p2 a").first().attr("href") ?? e.select("span.name a").first().attr("href"),
-                    description: e.select("p.p3").text() ?? '',
-                    host: "https://www.biquge345.com"
+                    link: url,
+                    description: url + "<br>" + e.select("p.p3").text() ?? '',
+                    host: ""
                 })
             });
         });
