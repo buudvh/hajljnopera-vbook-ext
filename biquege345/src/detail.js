@@ -13,7 +13,7 @@ function execute(url) {
             name: doc.select(".right_border h1").text(),
             cover: coverImg,
             author: author,
-            description: doc.select("span.x3").first().text(),
+            description: doc.select("div.x3").first().text() || '',
             detail: '',
             host: "http://www.biquge345.com"
         });
