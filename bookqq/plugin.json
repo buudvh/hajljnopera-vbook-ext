@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Book QQ from Nhocconsr",
     "author": "HuongMT",
-    "version": 1,
+    "version": 14,
     "source": "https://book.qq.com",
     "regexp": "(www.)?(ubook.reader|book).qq.com/book-detail/\\d+/?$",
     "description": "Book QQ",

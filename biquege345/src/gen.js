@@ -12,7 +12,7 @@ function execute(url) {
                 data.push({
                     name: e.select("h3.p2 a").first().text() ?? e.select("span.name a").first().text(),
                     link: url,
-                    description: url + "<br>" + e.select("p.p3").text() ?? '',
+                    description: "<br>" + e.select("p.p3").text() ?? '',
                     host: ""
                 })
             });
