@@ -1,5 +1,4 @@
 function execute(url) {
-    if(!url.endsWith("/")) url = url + "/";
     url = url.replace('m.biquge345.com', 'www.biquge345.com');
     let response = fetch(url);
     let data = "";
