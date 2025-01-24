@@ -1,21 +1,20 @@
 function execute(url) {
-	// url = url.replace('m.biquge345.com', 'www.biquge345.com');
-    // let response = fetch(url);
-    // if (response.ok) {
-    //     let doc = response.html();
-    //     let el1 = doc.select("#chapter_list").last()
-    //     let el = el1.select("li a")
-    //     const data = [];
-    //     for (let i = 0;i < el.size(); i++) {
-    //         var e = el.get(i);
-    //         data.push({
-    //             name: 'e.select("a").text()',
-    //             url:"http://www.biquge345.com" + e.attr("href"),
-    //             host: "http://www.biquge345.com"
-    //         })
-    //     }
-    //     return Response.success(data);
-    // }
-    // return null;
-    return Response.success([]);
+    if(!url.endsWith("/")) url = url + "/";
+	url = url.replace('m.biquge345.com', 'www.biquge345.com');
+    let response = fetch(url);
+    if (response.ok) {
+        const data = [];
+        let doc = response.html();
+        doc = doc.select("div.border");
+        doc.select("a").forEach(e => {
+            data.push({
+                name: e.text(),
+                url: "https://www.biquge345.com" + e.attr("href"),
+                host: ""
+            })
+        });
+
+        return Response.success(data);
+    }
+    return null;
 }
