@@ -1,4 +1,4 @@
-function execute(url, page) {
+function execute(url) {
 	url = url.replace('m.biquge345.com', 'www.biquge345.com');
     let response = fetch(url);
     if (response.ok) {
