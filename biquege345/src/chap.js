@@ -5,8 +5,7 @@ function execute(url) {
     let data = "";
     if (response.ok) {
         let doc = response.html();
-        doc.select(".posterror").remove();
-        data = doc.select("#txt").text()
+        data = doc.select(".txt").first().text()
                     .replace('\n','<br>')
                     .replace(/^第\d+章.*?<br>/, '');
     }
