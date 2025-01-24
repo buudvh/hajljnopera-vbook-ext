@@ -9,7 +9,7 @@ function execute(url) {
         doc.select("a").forEach(e => {
             data.push({
                 name: e.text(),
-                url: "https://www.biquge345.com" + e.attr("href"),
+                url: "https://www.biquge345.com" + e.attr("href").trim(),
                 host: ""
             })
         });
