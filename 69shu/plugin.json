@@ -2,9 +2,9 @@
   "metadata": {
     "name": "69shu (source:hajljnopera)",
     "author": "HuongMT",
-    "version": 13,
+    "version": 14,
     "source": "https://www.69shu.pro",
-    "regexp": "(www|m)\\.(69shu|69shuba|69xinshu)\\.(.*?)/(txt|book)/.*?\\.htm",
+    "regexp": "(www|m)?\\.?(69shu|69shuba|69xinshu)\\.(.*?)/(txt|book)/.*?\\.htm",
     "description": "Đọc truyện trên trang 69shuba.com",
     "locale": "zh_CN",
     "language": "javascript",
