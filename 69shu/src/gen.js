@@ -16,7 +16,7 @@ function execute(url, page) {
             data.push({
                 name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
                 link: $.Q(e, 'h3 > a').attr('href'),
-                cover: $.Q(e, '.imgbox > img').attr('data-src').trim(),
+                cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                 description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
                 host: BASE_URL
             })
