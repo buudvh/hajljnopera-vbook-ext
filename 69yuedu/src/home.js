@@ -1,6 +1,6 @@
 function execute() {
     return Response.success([
-        { title: "Truyện top", input: "/ajax_topindex/{0}", script: "gen.js" },
+        { title: "人气", input: "/ajax_topindex/{0}", script: "gen.js" },
 
         { title: "不限人气", input: "/ajax_articlelist/weekvisit_0_0_{0}.htm", script: "gen.js" },
         { title: "连载人气", input: "/ajax_articlelist/weekvisit_0_2_{0}.htm", script: "gen.js" },
