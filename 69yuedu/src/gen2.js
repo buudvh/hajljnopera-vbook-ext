@@ -2,7 +2,8 @@ load('libs.js');
 load('config.js');
 
 function execute(url, page) {
-    url = String.format(BASE_URL + "/articlelist/tag/" + url);
+    if (!page) page = '1';
+    url = String.format(BASE_URL + "/articlelist/tag/" + url, page);
     console.log(url)
     let response = fetch(url);
     if (response.ok) {
