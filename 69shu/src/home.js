@@ -1,6 +1,19 @@
 function execute() {
     return Response.success([
         {title: "最新更新", input: "/last", script: "update.js"},
+
+        {title: "不限新书榜", input: "/ajax_novels/newhot_0_0_{0}.htm", script: "gen.js"},
+        {title: "连载新书榜", input: "/ajax_novels/newhot_0_2_{0}.htm", script: "gen.js"},
+        {title: "全本新书榜", input: "/ajax_novels/newhot_0_1_{0}.htm", script: "gen.js"},
+
+        {title: "不限人气", input: "/ajax_novels/monthvisit_0_0_{0}.htm", script: "gen.js"},
+        {title: "连载人气", input: "/ajax_novels/monthvisit_0_2_{0}.htm", script: "gen.js"},
+        {title: "全本人气", input: "/ajax_novels/monthvisit_0_1_{0}.htm", script: "gen.js"},
+
+        {title: "不限推荐", input: "/ajax_novels/allvote_0_0_{0}.htm", script: "gen.js"},
+        {title: "连载推荐", input: "/ajax_novels/allvote_0_2_{0}.htm", script: "gen.js"},
+        {title: "全本推荐", input: "/ajax_novels/allvote_0_1_{0}.htm", script: "gen.js"},
+
         {title: "全部分类", input: "/ajax_novels/full/0/{0}.htm", script: "gen.js"},
         {title: "言情小说", input: "/ajax_novels/full/3/{0}.htm", script: "gen.js"},
         {title: "玄幻魔法", input: "/ajax_novels/full/1/{0}.htm", script: "gen.js"},
