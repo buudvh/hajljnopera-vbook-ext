@@ -41,10 +41,10 @@
       "description": "(5 trong 1) hỗ trợ đọc các web qidian(chương free), 69shu, ptwxz, qimao, fanqie (lên sangtacviet chỉ để lấy thông tin truyện với đọc bình luận cho tiện thôi)"
     },
     {
-      "name": "69yuedu by dat-bi",
+      "name": "69yuedu by datbi",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/69yuedu.zip",
-      "version": 4,
+      "version": 5,
       "source": "https://www.69yuedu.net",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.com"
