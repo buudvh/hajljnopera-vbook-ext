@@ -2,7 +2,7 @@
     "metadata": {
       "name": "69yuedu from datbi",
       "author": "HuongMT",
-      "version": 1,
+      "version": 2,
       "source": "https://www.69yuedu.net",
       "regexp": "(www|m).69yuedu.net\/article\/(.*?).html",
       "description": "Đọc truyện trên trang 69yuedu.net",
