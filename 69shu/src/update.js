@@ -23,7 +23,7 @@ function execute(url, page) {
             data.push({
                 name: $.Q(e, 'a').text(),
                 link: link,
-                cover: cover || '',
+                cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                 description: $.Q(e, 'a', 1).text(),
                 host: BASE_URL
             })

@@ -3,6 +3,9 @@ load('config.js');
 
 function execute(url, page) {
     page = page || '1';
+    if (page == '1') {
+        url = url.replace('ajax_novels', 'novels');
+    }
     url = String.format(BASE_URL + url, page);
     console.log(url)
     // log(url);
