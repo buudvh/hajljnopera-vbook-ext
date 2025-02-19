@@ -39,6 +39,15 @@
       "source": "https://www.biquge345.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/5in1/icon.png",
       "description": "(5 trong 1) hỗ trợ đọc các web qidian(chương free), 69shu, ptwxz, qimao, fanqie (lên sangtacviet chỉ để lấy thông tin truyện với đọc bình luận cho tiện thôi)"
+    },
+    {
+      "name": "69yuedu by dat-bi",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/69yuedu.zip",
+      "version": 1,
+      "source": "https://www.69yuedu.net",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/icon.png",
+      "description": "Đọc truyện trên trang https://www.69shuba.com"
     }
   ]
 }
