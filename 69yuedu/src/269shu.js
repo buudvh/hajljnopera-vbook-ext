@@ -44,9 +44,9 @@ function getDetail69yuedu(url) {
     let doc = response.html('gbk');
     let data = {
         name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
-        cover: host69yuedu + $.Q(doc, 'div.bookimg2 > img').attr('src'),
+        cover: "https://www.69yuedu.net/image/nocover.jpg",
         author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-        description: host69yuedu + $.Q(doc, 'div.bookimg2 > img').attr('src') + '\n' + $.Q(doc, 'div.navtxt > p').html(),
+        description: $.Q(doc, 'div.navtxt > p').html(),
         detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' })
     }
     return data;
