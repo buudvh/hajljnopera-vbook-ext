@@ -10,7 +10,7 @@ function execute(url) {
 
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
-            cover: $.Q(doc, 'div.bookimg2 > img').attr('src'),
+            cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
             author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             description: $.Q(doc, 'div.navtxt > p').html(),
             detail: $.QA(doc, 'div.booknav2 p', {m: x => x.text(), j: '<br>'}),
