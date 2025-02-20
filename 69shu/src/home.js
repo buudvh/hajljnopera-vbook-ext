@@ -1,6 +1,6 @@
 function execute() {
     return Response.success([
-        {title: "最新更新", input: "/last", script: "update.js"},
+        // {title: "最新更新", input: "/last", script: "update.js"},
 
         {title: "不限新书榜", input: "/ajax_novels/newhot_0_0_{0}.htm", script: "gen.js"},
         {title: "连载新书榜", input: "/ajax_novels/newhot_0_2_{0}.htm", script: "gen.js"},
