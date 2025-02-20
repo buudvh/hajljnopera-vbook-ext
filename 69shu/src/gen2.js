@@ -2,6 +2,7 @@ load('libs.js');
 load('config.js');
 
 function execute(url, page) {
+    page = page || '1';
     url = String.format(BASE_URL + "/newtag" + url);
     console.log(url)
     // log(url);
@@ -19,7 +20,8 @@ function execute(url, page) {
                 host: BASE_URL
             })
         })
-        return Response.success(data);
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
     }
     return null;
 }
