@@ -2,6 +2,8 @@ function execute() {
     return Response.success([
         { title: "人气", input: "/ajax_topindex/{0}", script: "gen.js" },
 
+        { title: "诸天流", input: "/诸天流/{0}/", script: "gen2.js" },
+
         { title: "不限人气", input: "/ajax_articlelist/weekvisit_0_0_{0}.htm", script: "gen.js" },
         { title: "连载人气", input: "/ajax_articlelist/weekvisit_0_2_{0}.htm", script: "gen.js" },
         { title: "全本人气", input: "/ajax_articlelist/weekvisit_0_1_{0}.htm", script: "gen.js" },
