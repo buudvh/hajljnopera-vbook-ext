@@ -3,7 +3,7 @@ load('config.js');
 
 function execute(url, page) {
     page = page || '1';
-    url = String.format(BASE_URL + "/newtag" + url);
+    url = String.format(BASE_URL + "/tag" + url);
     console.log(url)
     // log(url);
     let response = fetch(url);
@@ -15,7 +15,7 @@ function execute(url, page) {
             data.push({
                 name: e.select("h3").text().trim(),
                 link: e.select("h3 a").attr('href'),
-                cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+                cover: e.select("img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                 description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
                 host: BASE_URL
             })
