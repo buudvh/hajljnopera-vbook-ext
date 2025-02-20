@@ -19,7 +19,8 @@ function execute(url, page) {
                 host: BASE_URL
             })
         })
-        return Response.success(data);
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
     }
     return null;
 }
