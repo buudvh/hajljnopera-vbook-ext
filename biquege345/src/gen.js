@@ -11,6 +11,7 @@ function execute(url) {
                 if(url.startsWith("/")) url = "https://www.biquge345.com" + url;
                 data.push({
                     name: e.select("h3.p2 a").first().text() ?? e.select("span.name a").first().text(),
+                    cover: e.select("img").first().attr("src") ?? "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                     link: url,
                     description: e.select("p.p3").text() ?? '',
                     host: ""

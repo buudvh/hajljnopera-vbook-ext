@@ -4,7 +4,7 @@ function execute(url) {
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
-        let coverImg = doc.select(".zhutu img").first().attr("src");
+        let coverImg = doc.select("div.zhutu > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg";
         if (coverImg.startsWith("/")) {
             coverImg = "http://www.biquge345.com" + coverImg;
         }

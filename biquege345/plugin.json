@@ -2,7 +2,7 @@
   "metadata": {
     "name": "biquge345",
     "author": "HuongMT",
-    "version": 21,
+    "version": 22,
     "source": "https://www.biquge345.com",
     "regexp": "^(https:\\/\\/)(m\\.|www\\.)?biquge345\\.com\\/(shu|book)\\/\\d+\\/$",
     "description": "Đọc truyện trên trang biquge345",
