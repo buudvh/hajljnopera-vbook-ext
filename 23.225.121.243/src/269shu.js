@@ -23,7 +23,7 @@ function getToc69yuedu(url) {
         let response = fetch(url);
         if (response.ok) {
             let doc = response.html();
-            var elems = doc.select('div.section-box').first().select('a');
+            var elems = doc.select('div.section-box')[1].select('a');
             elems.forEach(function (e) {
                 data.push({
                     name: formatName(e.text()),
