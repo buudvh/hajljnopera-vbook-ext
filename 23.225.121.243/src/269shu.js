@@ -5,6 +5,7 @@ function getChap69yuedu(url) {
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html();
+        doc = doc.select("#content").select('h1').remove();
         var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
 
         text += cleanHtml(htm)
@@ -16,6 +17,7 @@ function getChap69yuedu(url) {
     response = fetch(url2);
     if (response.ok) {
         let doc = response.html();
+        doc = doc.select("#content").select('h1').remove();
         var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
 
         text += cleanHtml(htm)
