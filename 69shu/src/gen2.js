@@ -3,7 +3,7 @@ load('config.js');
 
 function execute(url, page) {
     page = page || '1';
-    url = String.format(BASE_URL + "/tag" + url);
+    url = String.format(BASE_URL + "/tag" + url, page);
     console.log(url)
     // log(url);
     let response = fetch(url);
