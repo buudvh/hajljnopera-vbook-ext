@@ -17,24 +17,38 @@ function getChap69yuedu(url) {
     return htm.replace(/<br\s*\/?>|\n/g, "<br><br>");
 }
 function getToc69yuedu(url) {
-    let rid = url.replace("https://www.69yuedu.net/article/", "").replace(".html", "")
-    url = url.replace(".html", ".json")
-    console.log(rid)
+    let pageList = getListPageToc(url);
+    pageList.forEach(function (e) {
+        let response = fetch(url);
+        if (response.ok) {
+            let doc = response.html();
+            var data = [];
+            var elems = doc.select('div.section-box').first().select('a');
+            elems.forEach(function (e) {
+                data.push({
+                    name: formatName(e.text()),
+                    url: e.attr('href'),
+                    host: host69yuedu
+                })
+            });
+        }
+    });
+    return data;
+}
+
+function getListPageToc(url) {
     let response = fetch(url);
     if (response.ok) {
-        let doc = response.json('gbk');
+        let doc = response.html();;
         var data = [];
-        var elems = doc.items;
-        elems.forEach(function (e) {
-            data.push({
-                name: formatName(e.n),
-                url: "https://www.69yuedu.net/r/" + rid +"/" + e.cid + ".html",
-                host: host69yuedu
-            })
+        var menu = doc.select("div.listpage > span.middle > select").first();
+        menu.select("option").forEach(function (e) {
+            data.push(host69yuedu + e.attr("value"));
         });
         return data;
     }
 }
+
 function formatName(name) {
     var re = /^(\d+)\.第(\d+)章/;
     return name.replace(re, '第$2章');
