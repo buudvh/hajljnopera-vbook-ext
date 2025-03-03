@@ -1,39 +1,40 @@
 var host69yuedu = 'http://23.225.121.243';
 function getChap69yuedu(url) {
+    let text = '';
+    let rid = url.replace(host69yuedu, "").replace(".html", "")
     let response = fetch(url);
     if (response.ok) {
-        let doc = response.html('gbk');
-        if (doc.html().includes("vip='69shu")) {
-            var browser = Engine.newBrowser() // Khởi tạo browser
-            doc = browser.launch(url, 4000)
-        }
-        var htm = $.Q(doc, '.content', { remove: ['h1', 'div'] }).html();
+        let doc = response.html();
+        var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
 
-        htm = cleanHtml(htm)
+        text += cleanHtml(htm)
             .replace(/^ *第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '')
             ;
     }
-    return htm.replace(/<br\s*\/?>|\n/g, "<br><br>");
+    let url2 = host69yuedu + rid + "_2.html";
+    response = fetch(url2);
+    if (response.ok) {
+        let doc = response.html();
+        var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
+
+        text += cleanHtml(htm)
+            .replace(/^ *第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
+            .replace('(本章完)', '')
+            ;
+    }
+    return text.replace(/<br\s*\/?>|\n/g, "<br><br>");
 }
 function getToc69yuedu(url) {
-    // let pageList = getListPageToc(url);
-    // var data = [];
-    // pageList.forEach(function (e) {
-    //     let response = fetch(url);
-    //     if (response.ok) {
-    //         let doc = response.html();
-    //         var elems = doc.select('div.section-box')[1].select('a');
-    //         elems.forEach(function (e) {
-    //             data.push({
-    //                 name: formatName(e.text()),
-    //                 url: e.attr('href'),
-    //                 host: host69yuedu
-    //             })
-    //         });
-    //     }
-    // });
-    // return data;
+    let pageList = getListPageToc(url);
+    var data = [];
+    pageList.forEach(function (e) {
+        data = data.concat(getTocInEachMenuPage(e));
+    });
+    return data;
+}
+
+function getTocInEachMenuPage(url) {
     let response = fetch(url);
     var data = [];
     if (response.ok) {
