@@ -14,7 +14,6 @@ function execute(url) {
 		var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
 		
 		elems.forEach(function(e) {
-            if (data.some(x => x.url === e.attr('href'))) return;
 			data.push({
 				name: formatName(e.text()),
 				url: e.attr('href'),
@@ -22,6 +21,9 @@ function execute(url) {
 			})
 		});
 
+        data = data.filter((chapter, index, self) =>
+            index === self.findIndex((u) => u.url === chapter.url)
+          );
         data = data.reverse();
 
 		return Response.success(data);
