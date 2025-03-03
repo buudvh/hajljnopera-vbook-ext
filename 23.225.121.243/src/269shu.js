@@ -17,22 +17,36 @@ function getChap69yuedu(url) {
     return htm.replace(/<br\s*\/?>|\n/g, "<br><br>");
 }
 function getToc69yuedu(url) {
-    let pageList = getListPageToc(url);
+    // let pageList = getListPageToc(url);
+    // var data = [];
+    // pageList.forEach(function (e) {
+    //     let response = fetch(url);
+    //     if (response.ok) {
+    //         let doc = response.html();
+    //         var elems = doc.select('div.section-box')[1].select('a');
+    //         elems.forEach(function (e) {
+    //             data.push({
+    //                 name: formatName(e.text()),
+    //                 url: e.attr('href'),
+    //                 host: host69yuedu
+    //             })
+    //         });
+    //     }
+    // });
+    // return data;
+    let response = fetch(url);
     var data = [];
-    pageList.forEach(function (e) {
-        let response = fetch(url);
-        if (response.ok) {
-            let doc = response.html();
-            var elems = doc.select('div.section-box')[1].select('a');
-            elems.forEach(function (e) {
-                data.push({
-                    name: formatName(e.text()),
-                    url: e.attr('href'),
-                    host: host69yuedu
-                })
-            });
-        }
-    });
+    if (response.ok) {
+        let doc = response.html();
+        var elems = doc.select('div.section-box')[1].select('a');
+        elems.forEach(function (e) {
+            data.push({
+                name: formatName(e.text()),
+                url: e.attr('href'),
+                host: host69yuedu
+            })
+        });
+    }
     return data;
 }
 
