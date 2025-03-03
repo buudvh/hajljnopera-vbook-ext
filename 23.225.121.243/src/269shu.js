@@ -7,8 +7,8 @@ function getChap69yuedu(url) {
         let doc = response.html();
         var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
 
-        text += cleanHtml(htm)
-            .replace(/^第\d+章.*?(\(第\d+\/\d+页\))?\s*<br>\s*/gm, '') // Ex: '  第11745章 大结局，终<br>'
+        text += cleanHtml(htm.replace(/<h1.*?>.*?<\/h1>/g, ''))
+            .replace(/^ *第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '');
     }
     let url2 = host69yuedu + rid + "_2.html";
@@ -17,8 +17,8 @@ function getChap69yuedu(url) {
         let doc = response.html();
         var htm = $.Q(doc, '#content', { remove: ['h1', 'div'] }).html();
 
-        text += cleanHtml(htm)
-            .replace(/^第\d+章.*?(\(第\d+\/\d+页\))?\s*<br>\s*/gm, '') // Ex: '  第11745章 大结局，终<br>'
+        text += cleanHtml(htm.replace(/<h1.*?>.*?<\/h1>/g, ''))
+            .replace(/^ *第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '');
     }
     return text.replace(/<br\s*\/?>|\n/g, "<br><br>");
