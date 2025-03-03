@@ -22,9 +22,6 @@ function execute(url) {
 			})
 		});
 
-        data = data.filter((chapter, index, self) =>
-            index === self.findIndex((u) => u.id === chapter.id)
-          );
         data = data.reverse();
 
 		return Response.success(data);
