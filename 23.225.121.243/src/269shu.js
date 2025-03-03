@@ -43,7 +43,7 @@ function getDetail69yuedu(url) {
     let response = fetch(url);
     let doc = response.html('gbk');
     let data = {
-        name: doc.select("div.info > div > h1").text() || $.Q(doc, 'div.info > div > h1').text(),
+        name: doc.select("div.row.row-detail > h1").text(),
         cover: doc.select("div.imgbox > img").attr("src"),
         author: (doc.select("div.fix > p:nth-child(1)").text() || $.Q(doc, 'div.fix > p:nth-child(1)').text()).replace('作者：', '').trim(),
         description: doc.select("div.desc").text() || $.Q(doc, 'div.desc').text() || url,
