@@ -18,11 +18,11 @@ function getChap69yuedu(url) {
 }
 function getToc69yuedu(url) {
     let pageList = getListPageToc(url);
+    var data = [];
     pageList.forEach(function (e) {
         let response = fetch(url);
         if (response.ok) {
             let doc = response.html();
-            var data = [];
             var elems = doc.select('div.section-box').first().select('a');
             elems.forEach(function (e) {
                 data.push({
