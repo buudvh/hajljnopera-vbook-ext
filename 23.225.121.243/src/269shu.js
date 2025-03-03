@@ -38,14 +38,22 @@ function getToc69yuedu(url) {
     var data = [];
     if (response.ok) {
         let doc = response.html();
-        var elems = doc.select('div.section-box')[1].select('a');
+        var elems = doc.select('div.section-box');
+        var count = 0;
         elems.forEach(function (e) {
-            data.push({
-                name: formatName(e.text()),
-                url: e.attr('href'),
-                host: host69yuedu
-            })
-        });
+            if(count > 0){
+                var elems = e.select('a');
+                elems.forEach(function (e) {
+                    data.push({
+                        name: formatName(e.text()),
+                        url: e.attr('href'),
+                        host: host69yuedu
+                    })
+                });
+            }
+
+            count++;
+        })
     }
     return data;
 }
