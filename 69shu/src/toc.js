@@ -17,12 +17,13 @@ function execute(url) {
 			data.push({
 				name: formatName(e.text()),
 				url: e.attr('href'),
-				host: BASE_URL
+				host: BASE_URL,
+                id: e.attr('data-num')
 			})
 		});
 
         data = data.filter((chapter, index, self) =>
-            index === self.findIndex((u) => u.url === chapter.url)
+            index === self.findIndex((u) => u.id === chapter.id)
           );
         data = data.reverse();
 
