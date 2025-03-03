@@ -1,4 +1,4 @@
-var host69yuedu = 'https://www.69yuedu.net';
+var host69yuedu = 'http://23.225.121.243';
 function getChap69yuedu(url) {
     let response = fetch(url);
     if (response.ok) {
@@ -41,7 +41,7 @@ function formatName(name) {
 }
 function getDetail69yuedu(url) {
     let response = fetch(url);
-    let doc = response.html('gbk');
+    let doc = response.html();
     let data = {
         name: doc.select("div.info > div > h1").html() || 'No name',
         cover: doc.select("div.imgbox > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
