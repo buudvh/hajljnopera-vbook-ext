@@ -43,11 +43,11 @@ function getDetail69yuedu(url) {
     let response = fetch(url);
     let doc = response.html('gbk');
     let data = {
-        name: doc.select("div.row.row-detail > h1").text(),
-        cover: doc.select("div.imgbox > img").attr("src"),
-        author: (doc.select("div.fix > p:nth-child(1)").text() || $.Q(doc, 'div.fix > p:nth-child(1)').text()).replace('作者：', '').trim(),
-        description: doc.select("div.desc").text() || $.Q(doc, 'div.desc').text() || url,
-        detail: $.QA(doc, 'div.fix p', { m: x => x.text(), j: '<br>' })
+        name: doc.select("div.info > div > h1").html() || document.querySelector('div.info > div > h1').innerHTML || 'No name',
+        cover: doc.select("div.imgbox > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+        author: doc.select("div.fix > p:nth-child(1)").html().replace('作者：', '') || 'Unknow',
+        description: doc.select("div.desc").html() || document.querySelector('div.desc').innerHTML || '',
+        detail: $.QA(doc, 'div.fix p', { m: x => x.text(), j: '<br>' }) || '',
     }
     return data;
 }
