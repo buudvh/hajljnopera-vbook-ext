@@ -26,6 +26,7 @@ function getToc69yuedu(url) {
         var data = [];
         var elems = doc.items;
         elems.forEach(function (e) {
+            if (data.some(x => x.url === ("https://www.69yuedu.net/r/" + rid +"/" + e.cid + ".html"))) return;
             data.push({
                 name: formatName(e.n),
                 url: "https://www.69yuedu.net/r/" + rid +"/" + e.cid + ".html",
