@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "name": "Gemini Translate",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://generativelanguage.googleapis.com",
+    "description": "Dịch truyện bằng Gemini Translate",
+    "type": "translate"
+  },
+  "script": {
+    "language": "language.js",
+    "translate": "translate.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_length": 9500,
+    "required_api_key": false,
+    "support_url": "https://generativelanguage.googleapis.com"
+  }
+}

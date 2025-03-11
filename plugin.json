@@ -57,6 +57,15 @@
       "source": "http://23.225.121.243",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/23.225.121.243/icon.png",
       "description": "Đọc truyện trên trang http://23.225.121.243"
+    },
+    {
+      "name": "Gemini Translate",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/gemini-trans/gemini-trans.zip",
+      "version": 1,
+      "source": "https://generativelanguage.googleapis.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/gemini-trans/icon.png",
+      "description": "Đọc truyện trên trang http://23.225.121.243"
     }
   ]
 }
