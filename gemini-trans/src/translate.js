@@ -30,11 +30,10 @@ function translateContent(text, from, to, retryCount) {
         let result = response.json();
         if (result && result.candidates && result.candidates.length > 0) {
             let translatedText = result.candidates[0].content.parts[0].text;
-            Response.success(translatedText.trim());
+            return Response.success(translatedText.trim());
           } else {
             return translateContent(text, from, to, retryCount + 1);
           }
-        return Response.success(trans.trim());
     }
     return translateContent(text, from, to, retryCount + 1);
 }
