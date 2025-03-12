@@ -1,19 +1,18 @@
 load("language_list.js");
 
-const apiKey = 'AIzaSyDbnKy2efzF2bW4Lw6jHV5FAaIJt9SiINM';
-
 function execute(text, from, to, apiKey) {
     return translateContent(text, from, to, 0);
 }
 
 function createPrompt(text){
-    return `Cho bạn đoạn văn bản: "${text}".
-                 Hãy dịch đoạn văn bản đó thành Tiếng Việt (Vietnamese) với các điều kiện sau:
-                 - Tuân thủ chặt chẽ bối cảnh và sắc thái ban đầu.
-                 - Sự lưu loát tự nhiên như người bản xứ.
-                 - Không có thêm giải thích/diễn giải.
-                 - Bảo toàn thuật ngữ 1:1 cho các thuật ngữ/danh từ riêng.
-                 Chỉ in ra bản dịch mà không có dấu ngoặc kép.`;
+    return "Cho bạn đoạn văn bản: \"" + text + "\".\n"
+       + "Hãy dịch đoạn văn bản đó thành Tiếng Việt (Vietnamese) với các điều kiện sau:\n"
+       + "- Tuân thủ chặt chẽ bối cảnh và sắc thái ban đầu.\n"
+       + "- Sự lưu loát tự nhiên như người bản xứ.\n"
+       + "- Không có thêm giải thích/diễn giải.\n"
+       + "- Bảo toàn thuật ngữ 1:1 cho các thuật ngữ/danh từ riêng.\n"
+       + "Chỉ in ra bản dịch mà không có dấu ngoặc kép.";
+
   }
 
 function translateContent(text, from, to, retryCount) {
@@ -21,7 +20,7 @@ function translateContent(text, from, to, retryCount) {
     let requestBody = {
         contents: [{ parts: [{ text: createPrompt(text) }] }]
     };
-    let response = fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey, {
+    let response = fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyDEYuEepJBjHvsDA36Pv74QeMc8wyKbArA", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody)
