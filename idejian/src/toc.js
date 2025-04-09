@@ -8,7 +8,7 @@ function execute(url) {
     const chapterRegex = /<a href="([^"]+)">([^<]+)<\/a>/g;
     
     while(true){
-        url = BASE_URL + '/catelog/' + bookId + '/' + 1 + '/?page=' + page;
+        url = BASE_URL + 'catelog/' + bookId + '/1/?page=' + page;
         let response = fetch(url);
         if (response.ok) {
             let json = response.json();
