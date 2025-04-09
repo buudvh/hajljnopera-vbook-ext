@@ -1,5 +1,5 @@
 load('config.js');
-function execute(url) {
+async function execute(url) {
     let page = 1;
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
     const match = url.match(/book\/(\d+)/);
@@ -8,28 +8,30 @@ function execute(url) {
     
     
     while(true){
-        url = BASE_URL + '/catelog/' + bookId + '/' + 1 + '/?page=' + page;
-        let response = fetch(url);
-        if (response.ok) {
-            let json = response.json();
-            let html = json.html;
-            if (html.length == 0) {
-                break;
-            }
-            page++;
-            html = Html.parse(html);
-            let el = html.select("li a");
-            for (let i = 0; i < el.size(); i++) {
-                var e = el.get(i);
-                data.push({
-                    name: e.text(),
-                    url: BASE_URL + e.attr("href"),
-                    host: BASE_URL
-                });
-    
-            }
-            return Response.success(data);
-        }
+        let requestUrl = `${BASE_URL}/catelog/${bookId}/1/?page=${page}`;
+        const response = await fetch(requestUrl);
+
+        if (!response.ok) break;
+
+        const json = await response.json();
+        let htmlText = json.html;
+
+        if (!htmlText || htmlText.length === 0) break;
+
+        page++;
+
+        // Parse HTML string thành DOM
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        const links = doc.querySelectorAll('li a');
+
+        links.forEach(link => {
+            data.push({
+                name: link.textContent.trim(),
+                url: BASE_URL + link.getAttribute('href'),
+                host: BASE_URL
+            });
+        });
     }
     
 
