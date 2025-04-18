@@ -40,5 +40,7 @@ function formatName(name) {
         result = result.slice(0, lastParenIndex);
     }
 
+    result = result.replace(/[【].*$/, '');
+
     return result.trim();
 }
