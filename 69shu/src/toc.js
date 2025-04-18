@@ -30,9 +30,14 @@ function execute(url) {
 }
 
 
-// "63.第63章 无上极境，诸神共鸣" --> "第63章 无上极境，诸神共鸣"
 function formatName(name) {
     var re = /^(\d+)\.第(\d+)章/;
 
-    return name.replace(re, '第$2章');
+    // "63.第63章 无上极境，诸神共鸣" --> "第63章 无上极境，诸神共鸣"
+    var result = name.replace(re, '第$2章 ');
+
+    //第63章 无上极境，(诸神共鸣) --> 第63章 无上极境
+    result = result.replace(/\s*\（.*?\）|\s*\(.*?\)/g, '');
+
+    result.trim();
 }
