@@ -39,5 +39,5 @@ function formatName(name) {
     //第63章 无上极境，(诸神共鸣) --> 第63章 无上极境
     result = result.replace(/\s*\（.*?\）|\s*\(.*?\)/g, '');
 
-    result.trim();
+    return result.trim();
 }
