@@ -31,13 +31,14 @@ function execute(url) {
 
 
 function formatName(name) {
-    var re = /^(\d+)\.第(\d+)章/;
+    var re = /^(\d+)\.第(\d+)章\s*/;
+    let result = name.replace(re, '第$2章 ');
 
-    // "63.第63章 无上极境，诸神共鸣" --> "第63章 无上极境，诸神共鸣"
-    var result = name.replace(re, '第$2章 ');
+    let lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
 
-    //第63章 无上极境，(诸神共鸣) --> 第63章 无上极境
-    result = result.replace(/\s*\（.*?\）|\s*\(.*?\)/g, '');
+    if (lastParenIndex !== -1) {
+        result = result.slice(0, lastParenIndex);
+    }
 
     return result.trim();
 }
