@@ -1,10 +1,14 @@
 load('libs.js');
-load('config.js')
+load('config.js');
 
 function execute(url, page) {
     page = page || '1';
+    if (page == '1') {
+        url = url.replace('ajax_novels', 'novels');
+    }
     url = String.format(BASE_URL + url, page);
     console.log(url)
+    // log(url);
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html('gbk');
@@ -15,7 +19,7 @@ function execute(url, page) {
             data.push({
                 name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
                 link: $.Q(e, 'h3 > a').attr('href'),
-                cover: "https://www.69yuedu.net/image/nocover.jpg",
+                cover: e.select("img").attr("data-src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
                 description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
                 host: BASE_URL
             })
