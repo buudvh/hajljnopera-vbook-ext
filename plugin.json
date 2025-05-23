@@ -50,22 +50,13 @@
       "description": "Đọc truyện trên trang https://www.69shuba.com"
     },
     {
-      "name": "零点看书",
+      "name": "html5qq by Moleys",
       "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/23.225.121.243/23.225.121.243.zip",
-      "version": 16,
-      "source": "http://23.225.121.243",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/23.225.121.243/icon.png",
-      "description": "Đọc truyện trên trang http://23.225.121.243"
-    },
-    {
-      "name": "Idejian from duongden",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/idejian/idejian.zip",
-      "version": 4,
-      "source": "https://www.idejian.com",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/idejian/icon.png",
-      "description": "Đọc truyện trên trang idejian"
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/html5qq/html5qq.zip",
+      "version": 1,
+      "source": "https://bookshelf.html5.qq.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/html5qq/icon.png",
+      "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
     }
   ]
 }
