@@ -12,7 +12,7 @@ function execute(url, page) {
             if (!elems.length) return Response.error(url);
             elems.forEach(function (e) {
                 data.push({
-                    name: bookData.book_name,
+                    name: $.QA(e, 'div > div:nth-child(1)').text(),
                     link: e.attr('href'),
                     cover: $.QA(e, 'img').attr('src'),
                     description: $.QA(e, 'div > div:nth-child(2)').text(),
@@ -24,8 +24,15 @@ function execute(url, page) {
             return Response.success(data, next_page.toString());
         }
         return null;
-    } catch (e) { 
-        return Response.error(e);
+    } catch (e) {
+        return Response.success([{
+            name: "",
+            link: "",
+            cover: "",
+            description: e,
+            author: "",
+            kind: ""
+        }], 0);
     }
 
 }
