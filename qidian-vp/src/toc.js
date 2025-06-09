@@ -12,9 +12,7 @@ function execute(url) {
             let response = fetch(inputUrl);
             if (response.ok) {
                 let doc = response.html();
-                var data = [];
                 var elems = doc.select("a[id]");
-                if (elems.length) return Response.error(url);
                 elems.forEach(function (e) {
                     charpters.push({
                         name: e.select("h3").text(),
@@ -27,17 +25,16 @@ function execute(url) {
                         host: "",
                     });
                 })
-                let next_page = parseInt(page) + 1;
-                return Response.success(data, next_page.toString());
+                page = parseInt(page) + 1;
             }
         }
         while (temp.length != 0);
-        return null;
+        return Response.success(charpters);
     } catch (error) {
         return Response.success([{
             name: error.message,
             url: "",
             host: "",
-        }], 0);
+        }]);
     }
 }
