@@ -24,12 +24,12 @@ function execute(url, page) {
             return Response.success(data, next_page.toString());
         }
         return null;
-    } catch (e) {
+    } catch (error) {
         return Response.success([{
-            name: "",
-            link: "",
-            cover: "",
-            description: e,
+            name: "BUU",
+            link: "BUU",
+            cover: "https://cdn.qidian-vp.com/poster/cau-tha-thanh-thanh-nhan-tien-quan-trieu-ta-cham-ngua-150.jpg",
+            description: error.message,
             author: "",
             kind: ""
         }], 0);
