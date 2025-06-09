@@ -5,8 +5,9 @@ function execute(url) {
         let response = fetch(url);
         if (response.ok) {
             let doc = response.html();
-            let htm = doc.select("#chapter-content").html();
-            htm.select("h2").remove();
+            let elm = doc.select("#chapter-content");
+            elm.select("h2").remove();
+            let htm = elm.html();
             htm = cleanHtml(htm);
             return Response.success(htm);
         }
