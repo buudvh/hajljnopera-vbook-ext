@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Qidian-VP",
     "author": "HuongMT",
-    "version": 7,
+    "version": 8,
     "source": "https://qidian-vp.com/",
     "regexp": "https://qidian-vp.com/truyen/\\d+",
     "description": "Qidian-VP",
