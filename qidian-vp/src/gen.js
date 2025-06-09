@@ -5,7 +5,7 @@ function execute(url, page) {
     let inputUrl = url + '?page=' + page;
     let response = fetch(inputUrl);
     if (response.ok) {
-        let doc = response.html('gbk');
+        let doc = response.html();
         var data = [];
         var elems = $.QA(doc, 'a.items-center');
         if (!elems.length) return Response.error(url);
