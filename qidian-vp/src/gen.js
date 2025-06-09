@@ -12,10 +12,10 @@ function execute(url, page) {
             if (!elems.length) return Response.error(url);
             elems.forEach(function (e) {
                 data.push({
-                    name: $.QA(e, 'h3').text(),
+                    name: e.select("h3.font-bold").text(),
                     link: e.attr('href'),
-                    cover: $.QA(e, 'img').attr('src'),
-                    description: $.QA(e, '.mb-auto').text(),
+                    cover: e.select("img").attr('src'),
+                    description: e.select("div.mb-auto").text(),
                     author: "",
                     kind: ""
                 })
