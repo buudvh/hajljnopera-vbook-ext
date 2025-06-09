@@ -57,6 +57,15 @@
       "source": "https://bookshelf.html5.qq.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/html5qq/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
+    },
+    {
+      "name": "Fanqie by Nahona",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/Fanqienovel/Fanqienovel.zip",
+      "version": 1,
+      "source": "https://bookshelf.html5.qq.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/Fanqienovel/icon.png",
+      "description": "Đọc truyện trên trang Fanqienovel.com"
     }
   ]
 }
