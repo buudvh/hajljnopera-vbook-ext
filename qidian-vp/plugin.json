@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "name": "Qidian-VP",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://qidian-vp.com/",
+    "regexp": "https://qidian-vp.com/truyen/\\d+",
+    "description": "Qidian-VP",
+    "locale": "vi_VN",
+    "language": "javascript",
+  },
+  "script": {
+    "home": "home.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  }
+}
