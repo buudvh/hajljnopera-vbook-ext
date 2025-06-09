@@ -7,7 +7,7 @@
     "regexp": "https://qidian-vp.com/truyen/\\d+",
     "description": "Qidian-VP",
     "locale": "vi_VN",
-    "language": "javascript",
+    "language": "javascript"
   },
   "script": {
     "home": "home.js",
