@@ -20,10 +20,6 @@ function execute() {
             title: "Đồng nhân",
             input: "https://qidian-vp.com/the-loai/dong-nhan",
             script: "gen.js"
-        },{
-            title: "Hoàn thành",
-            input: "https://qidian-vp.com/danh-sach/truyen-hoan-thanh",
-            script: "gen.js"
         }
     ];
 
