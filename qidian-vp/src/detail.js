@@ -1,36 +1,34 @@
+load('libs.js');
+load('gbk.js');
 function execute(url) {
-    let bookId = null;
-    let apiUrl = url;
-    if (url.includes('fanqienovel.com/page/')) {
-        bookId = url.split('/page/').pop();
-        apiUrl = `https://api5-normal-lf.fqnovel.com/reading/bookapi/multi-detail/v/?aid=1967&iid=1&version_code=999&book_id=${bookId}`;
-    }
-    let response = fetch(apiUrl, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0", "Cookie": "novel_web_id=7181715568649700927" } });
-    if (response.ok) {
-        let json = response.json();
-        let bookInfo = json.data[0];
-        let categoryText = "";
-        if (Array.isArray(bookInfo.category_v2)) {
-            categoryText = bookInfo.category_v2.map(cat => cat.Name).join('<br>');
-        } else if (bookInfo.category_v2) {
-            categoryText = String(bookInfo.category_v2);
+    try {
+        let response = fetch(url);
+        if (response.ok) {
+            let doc = response.html();
+            return Response.success({
+                name: doc.select("h1").text(),
+                cover: doc.select("img.w-44").attr("src"),
+                author: doc.select("a.text-gray-400").text(),
+                description: doc.select("div.#synopsis").text(),
+                detail: "",
+                host: "",
+                lastChapter: "",
+                tocUrl: ""
+            });
         }
-        let intro = "  <br>📕 源名：" + bookInfo.original_book_name + "<br>📖 别名：" + bookInfo.book_flight_alias_name + "<br>✏️ 开坑：" + bookInfo.create_time.split('T')[0] + "<br>🏷️ 标签：" + bookInfo.tags + "<br>👤 主角：" + bookInfo.roles.replace(/\[|\"|\\]/g, '') + "<br>👁️ 在线：" + bookInfo.read_count + "人在读<br>📜 简介：" + bookInfo.book_abstract_v2 + "<br>📍 " + bookInfo.copyright_info.split('，')[0] + "。<br>";
-        let kind = "男生" + bookInfo.gender + "女生<br>" + bookInfo.category + "<br>" + "连载" + bookInfo.creation_status + "完结<br>" + bookInfo.score + "分<br>" + javaTimeFormatUTC(bookInfo.last_chapter_update_time * 1000, 'yyyy-MM-dd', 8) + "<br>" + "##连载0|1完结|男生0|1女生<br>";
-        kind = kind.replace("男生2女生", "出版").replace("连载0完结", '完结').replace("连载1完结", '连载').replace("连载4完结", "断更").replace("连载-1完结", "未知");
-        let detail = "作者： " + bookInfo.author + "<br>" + "字数： " + bookInfo.word_number + "<br>" + kind;
+        return null;
+    } catch (error) {
         return Response.success({
-            name: bookInfo.book_name,
-            cover: replaceCover(javaGetString(bookInfo.thumb_url)),
-            author: bookInfo.author,
-            description: intro,
-            detail: detail,
-            host: "https://fanqienovel.com",
-            lastChapter: bookInfo.last_chapter_title + " • " + javaTimeFormat(bookInfo.last_chapter_update_time * 1000),
-            tocUrl: bookInfo.book_id
+            name: "BUG",
+            cover: "",
+            author: "",
+            description: error.message,
+            detail: "",
+            host: "",
+            lastChapter: "",
+            tocUrl: ""
         });
     }
-    return null;
 }
 function replaceCover(coverUrl) {
     if (!coverUrl) return "";
