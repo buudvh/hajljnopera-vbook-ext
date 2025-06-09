@@ -63,7 +63,7 @@
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/Fanqienovel/Fanqienovel.zip",
       "version": 3,
-      "source": "https://bookshelf.html5.qq.com",
+      "source": "https://fanqienovel.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/Fanqienovel/icon.png",
       "description": "Đọc truyện trên trang Fanqienovel.com"
     },
@@ -71,8 +71,8 @@
       "name": "Qidian-VP",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/qidian-vp/qidian-vp.zip",
-      "version": 1,
-      "source": "https://bookshelf.html5.qq.com",
+      "version": 2,
+      "source": "https://qidian-vp.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/qidian-vp/icon.png",
       "description": "Đọc truyện trên trang qidian-vp.com"
     }
