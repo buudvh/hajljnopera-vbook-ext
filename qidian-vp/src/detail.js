@@ -9,7 +9,7 @@ function execute(url) {
                 name: doc.select("h1").text(),
                 cover: doc.select("img.w-44").attr("src"),
                 author: doc.select("a.text-gray-400").text(),
-                description: doc.select("div.#synopsis").text(),
+                description: doc.select(".#synopsis").html().replace(/·/g, ''),
                 detail: "",
                 host: "",
                 lastChapter: "",

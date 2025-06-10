@@ -5,8 +5,10 @@ function execute(url) {
     try {
         let response = fetch(url);
         if (response.ok) {
+            sleep(1000);
             let doc = response.html();
-            var elems = doc.select("a[id]");
+            let chapelm = doc.select("#chapter-list")
+            let elems = chapelm.select("a");
             elems.forEach(function (e) {
                 charpters.push({
                     name: e.select("h3").text(),
@@ -14,8 +16,10 @@ function execute(url) {
                     host: "",
                 });
             })
+            return Response.success(charpters);
         }
-        return Response.success(charpters);
+
+        return null;
     } catch (error) {
         return Response.success([{
             name: error.message,
