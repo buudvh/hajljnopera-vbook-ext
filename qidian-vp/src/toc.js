@@ -5,7 +5,6 @@ function execute(url) {
     try {
         let response = fetch(url);
         if (response.ok) {
-            sleep(1000);
             let doc = response.html();
             let chapelm = doc.select("#chapter-list")
             let elems = chapelm.select("a");
