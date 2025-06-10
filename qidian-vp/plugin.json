@@ -2,7 +2,7 @@
   "metadata": {
     "name": "Qidian-VP",
     "author": "HuongMT",
-    "version": 15,
+    "version": 16,
     "source": "https://qidian-vp.com/",
     "regexp": "https://qidian-vp.com/truyen/\\d+",
     "description": "Qidian-VP",
@@ -14,6 +14,7 @@
     "detail": "detail.js",
     "search": "search.js",
     "toc": "toc.js",
-    "chap": "chap.js"
+    "chap": "chap.js",
+    "page": "page.js"
   }
 }
