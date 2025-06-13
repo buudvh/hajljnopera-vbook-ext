@@ -75,6 +75,15 @@
       "source": "https://qidian-vp.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/qidian-vp/icon.png",
       "description": "Đọc truyện trên trang qidian-vp.com"
+    },
+    {
+      "name": "qsbread.com",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/qsbread/qsbread.zip",
+      "version": 1,
+      "source": "https://qsbread.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/qsbread/icon.png",
+      "description": "Đọc truyện trên trang qsbread.com"
     }
   ]
 }
