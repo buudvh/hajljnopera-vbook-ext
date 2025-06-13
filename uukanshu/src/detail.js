@@ -1,9 +1,6 @@
 function execute(url) {
     try {
-        let response = fetch(url, {
-            method: 'GET',
-            redirect: 'follow',
-        });
+        let response = fetch(url.replace('https','http'));
         if (response.ok) {
             let doc = response.html();
             return Response.success({
@@ -21,7 +18,7 @@ function execute(url) {
             name: "BUG",
             cover: "",
             author: "",
-            description: response.status + " " + response.statusText,
+            description: "failed to fetch: " + response.status,
             detail: "",
             host: "",
             lastChapter: "",
