@@ -5,10 +5,10 @@ function execute(url) {
             let doc = response.html();
             return Response.success({
                 name: doc.select("h1").text(),
-                cover: doc.select("img.thumbnail").attr("src"),
-                author: doc.select("p.booktag > a").text(),
-                description: doc.select("div.bookintro").text(),
-                detail: doc.select("p.booktime").text(),
+                cover: doc.select("div.bookcover img").first().attr("src"),
+                author: doc.select("div.bookinfo a").first().text(),
+                description: doc.select("p.bookintro").first().text(),
+                detail: doc.select("p.booktime").first().text(),
                 host: "",
                 lastChapter: "",
                 tocUrl: ""
