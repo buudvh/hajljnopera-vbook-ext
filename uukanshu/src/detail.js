@@ -1,6 +1,9 @@
 function execute(url) {
     try {
-        let response = fetch(url);
+        let response = fetch(url, {
+            method: 'GET',
+            redirect: 'follow',
+        });
         if (response.ok) {
             let doc = response.html();
             return Response.success({
