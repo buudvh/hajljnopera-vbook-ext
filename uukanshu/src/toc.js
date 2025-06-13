@@ -1,5 +1,3 @@
-load('libs.js');
-load('gbk.js');
 function execute(url) {
     let charpters = [];
     try {
