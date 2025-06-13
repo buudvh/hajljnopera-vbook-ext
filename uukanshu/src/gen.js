@@ -6,7 +6,7 @@ function execute(url, page) {
         if (response.ok) {
             let doc = response.html();
             var data = [];
-            var elems = $.QA(doc, 'div.bookbox');
+            var elems = doc.select('div.bookbox');
             elems.forEach(function (e) {
                 data.push({
                     name: e.select("h4.bookname").text(),
