@@ -1,4 +1,3 @@
-
 function execute(url) {
     try {
         let response = fetch(url);
