@@ -4,7 +4,7 @@ function execute(url) {
         let response = fetch(url);
         if (response.ok) {
             let doc = response.html();
-            let elm = doc.select("div.readcotent bbb font-normal");
+            let elm = doc.select("div.readcotent");
             let htm = elm.html();
             htm = cleanHtml(htm);
             return Response.success(htm);
