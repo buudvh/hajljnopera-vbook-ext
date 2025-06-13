@@ -1,7 +1,7 @@
 function execute(url, page) {
     try {
         if (!page) page = '1';
-        let inputUrl = url + '/' + page + "html";
+        let inputUrl = url.replace('https','http') + '/' + page + "html";
         let response = fetch(inputUrl);
         if (response.ok) {
             let doc = response.html();

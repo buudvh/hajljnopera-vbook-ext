@@ -1,7 +1,7 @@
 load('libs.js');
 function execute(url) {
     try {
-        let response = fetch(url);
+        let response = fetch(url.replace('https','http'));
         if (response.ok) {
             let doc = response.html();
             let elm = doc.select("div.readcotent");
