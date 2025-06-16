@@ -2,7 +2,7 @@ function execute() {
     var fxlist = [
         {
             title: "動漫同人",
-            input: "https://uukanshu.cc/class_3_{0}.html",
+            input: "https://uukanshu.cc/class_9_{0}.html",
             script: "gen.js"
         },
         //
@@ -95,7 +95,7 @@ function execute() {
         },
         {
             title: "其他類型",
-            input: "https://uukanshu.cc/class_3_{0}.html",
+            input: "https://uukanshu.cc/class_10_{0}.html",
             script: "gen.js"
         }
     ];
