@@ -19,7 +19,7 @@ function execute(url) {
             cover: "",
             author: "",
             description: "failed to fetch: " + response.status,
-            detail: "",
+            detail: url.replace('https','http'),
             host: "",
             lastChapter: "",
             tocUrl: ""
