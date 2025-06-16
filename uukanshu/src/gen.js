@@ -1,7 +1,7 @@
 function execute(url, page) {
     try {
         if (!page) page = '1';
-        let inputUrl = url.replace('https','http') + '/' + page + "html";
+        let inputUrl = String.format(url.replace('https','http'), page);
         let response = fetch(inputUrl);
         if (response.ok) {
             let doc = response.html();
@@ -10,7 +10,7 @@ function execute(url, page) {
             elems.forEach(function (e) {
                 data.push({
                     name: e.select("h4.bookname").text(),
-                    link: e.select("h4.bookname > a").attr('href'),
+                    link: e.select("h4.bookname a").first().attr('href'),
                     cover: "",
                     description: "",
                     author: "",
