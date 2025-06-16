@@ -1,6 +1,11 @@
+load('libs.js');
 function execute(url) {
     try {
-        let response = fetch(url.replace('https','http'));
+        let fetchUrl = url.replace('https','http');
+        if (!fetchUrl.endsWith("/")) {
+            fetchUrl = fetchUrl + "/";
+        }
+        let response = fetch(fetchUrl);
         if (response.ok) {
             let doc = response.html();
             return Response.success({
@@ -19,7 +24,7 @@ function execute(url) {
             cover: "",
             author: "",
             description: "failed to fetch: " + response.status,
-            detail: url.replace('https','http'),
+            detail: fetchUrl,
             host: "",
             lastChapter: "",
             tocUrl: ""

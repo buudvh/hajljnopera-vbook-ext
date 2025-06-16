@@ -1,7 +1,11 @@
 function execute(url) {
     let charpters = [];
     try {
-        let response = fetch(url.replace('https','http'));
+        let fetchUrl = url.replace('https','http');
+        if (!fetchUrl.endsWith("/")) {
+            fetchUrl = fetchUrl + "/";
+        }
+        let response = fetch(fetchUrl);
         if (response.ok) {
             let doc = response.html();
             let chapelm = doc.select("#list-chapterAll")
