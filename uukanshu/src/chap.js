@@ -6,7 +6,8 @@ function execute(url) {
             let doc = response.html();
             let elm = doc.select("div.readcotent");
             let htm = elm.html();
-            htm = cleanHtml(htm);
+            htm = cleanHtml(htm).replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
+            .replace('(本章完)', '');
             return Response.success(htm);
         }
         return null;

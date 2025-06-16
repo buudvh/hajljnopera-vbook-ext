@@ -1,3 +1,4 @@
+load('libs.js');
 function execute(url, page) {
     try {
         if (!page) page = '1';
