@@ -93,6 +93,15 @@
       "source": "https://uukanshu.cc",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/uukanshu/icon.png",
       "description": "Đọc truyện trên trang uukanshu.cc"
+    },
+    {
+      "name": "ptwxz by hajljnopera",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/ptwxz/ptwxz.zip",
+      "version": 1,
+      "source": "https://www.piaotia.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/ptwxz/icon.png",
+      "description": "Đọc truyện trên trang piaotia.com"
     }
   ]
 }
