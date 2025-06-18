@@ -8,7 +8,7 @@
       "name": "69shu (source:hajljnopera)",
       "author": "HuongMT",
       "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69shu/69shu.zip",
-      "version": 35,
+      "version": 36,
       "source": "https://www.69xinshu.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69shu/icon.png",
       "description": "Đọc truyện trên trang https://www.69shuba.com"
@@ -21,33 +21,6 @@
       "source": "https://book.qq.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/bookqq/icon.png",
       "description": "Đọc truyện trên trang book.qq.com"
-    },
-    {
-      "name": "biquge345",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biquege345/plugin.zip",
-      "version": 22,
-      "source": "https://www.biquge345.com",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biquege345/icon.png",
-      "description": "Đọc truyện trên trang biquge345.com"
-    },
-    {
-      "name": "5in1",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/5in1/plugin.zip",
-      "version": 33,
-      "source": "nhiều source",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/5in1/icon.png",
-      "description": "(5 trong 1) hỗ trợ đọc các web qidian(chương free), 69shu, ptwxz, qimao, fanqie (lên sangtacviet chỉ để lấy thông tin truyện với đọc bình luận cho tiện thôi)"
-    },
-    {
-      "name": "69yuedu by datbi",
-      "author": "HuongMT",
-      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/69yuedu.zip",
-      "version": 19,
-      "source": "https://www.69yuedu.net",
-      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/69yuedu/icon.png",
-      "description": "Đọc truyện trên trang https://www.69shuba.com"
     },
     {
       "name": "html5qq by Moleys",
