@@ -75,6 +75,15 @@
       "source": "https://www.piaotia.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/ptwxz/icon.png",
       "description": "Đọc truyện trên trang piaotia.com"
+    },
+    {
+      "name": "idejian by duongden",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/idejian/idejian.zip",
+      "version": 1,
+      "source": "https://www.idejian.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/idejian/icon.png",
+      "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
     }
   ]
 }
