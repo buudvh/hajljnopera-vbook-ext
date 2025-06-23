@@ -20,7 +20,7 @@ function execute(url) {
             return Response.success(data);
         }
 
-        return success([{
+        return Response.success([{
             name: url + " - " + response.status,
             link: "",
             cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
@@ -28,7 +28,7 @@ function execute(url) {
             host: BASE_URL
         }]);
     } catch (e) {
-        return success([{
+        return Response.success([{
             name: url + " - " + e.message,
             link: "",
             cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
