@@ -16,7 +16,7 @@ function execute(url) {
             script: "author.js"
         })
 
-        let script = $.Q(doc, 'script').text();
+        let script = doc.select('script').text();
         let bookInfor = getBookInfor(script);
         if (bookInfor) {
             let tags = bookInfor.tags.split('|');
