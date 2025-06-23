@@ -16,6 +16,13 @@ function execute(url) {
         })
 
         var elms = $.QA(doc, 'div.infotag > a');
+        if(elms.length == 0){
+            genres.push({
+                title: "no element",
+                input: "",
+                script: "gen2.js"
+            })
+        }
         elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
