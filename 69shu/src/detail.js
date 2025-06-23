@@ -10,12 +10,11 @@ function execute(url) {
         let genres = [];
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-            input: "https://www.69shuba.com/modules/article/author.php?author=%B0%AE%B3%D4%CC%C7%B3%E6%D7%D3",
+            input: decodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
             script: "author.js"
         })
 
-        let tag = doc.select("#tagul");
-        let elms = tag.select("a");
+        var elms = $.QA(doc, '.tagul > a');
         elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
@@ -35,4 +34,10 @@ function execute(url) {
         })
     }
     return null;
+}
+
+function decodeAuhtorUrl(url){
+    const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
+    let author = encodeURIComponent(url.replace(baseUrl, ""));
+    return baseUrl + author;
 }
