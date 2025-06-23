@@ -19,14 +19,21 @@ function execute(url) {
             })
             return Response.success(data);
         }
-        return null;
+
+        return success([{
+            name: url + " - " + response.status,
+            link: "",
+            cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+            description: "",
+            host: BASE_URL
+        }]);
     } catch (e) {
-        return success({
+        return success([{
             name: url + " - " + e.message,
             link: "",
             cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
             description: "",
             host: BASE_URL
-        });
+        }]);
     }
 }
