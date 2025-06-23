@@ -37,6 +37,13 @@ function execute(url) {
             detail: $.QA(doc, 'div.booknav2 p', {m: x => x.text(), j: '<br>'}),
             host: BASE_URL,
             genres: genres,
+            suggests: [
+                {
+                    title: "同一作者",
+                    input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
+                    script: "author.js"
+                }
+            ],
         })
     }
     return null;
