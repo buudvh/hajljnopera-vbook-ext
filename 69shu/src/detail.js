@@ -1,5 +1,6 @@
 load('libs.js');
 load('config.js');
+load('encoding.js');
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
@@ -38,6 +39,21 @@ function execute(url) {
 
 function decodeAuhtorUrl(url){
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
-    let author = encodeURIComponent(url.replace(baseUrl, ""));
+    let author = encodeToGBKUrl(url.replace(baseUrl, ""));
     return baseUrl + author;
+}
+
+function encodeToGBKUrl(str) {
+    const bytes = Encoding.convert(str, {
+        to: 'GB2312',
+        from: 'UNICODE',
+        type: 'array'
+    });
+
+    let encoded = '';
+    for (let i = 0; i < bytes.length; i++) {
+        const hex = bytes[i].toString(16).toUpperCase();
+        encoded += '%' + (hex.length === 1 ? '0' + hex : hex);
+    }
+    return encoded;
 }
