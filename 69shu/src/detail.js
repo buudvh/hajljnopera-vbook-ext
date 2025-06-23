@@ -10,27 +10,27 @@ function execute(url) {
         let doc = response.html('gbk');
         let genres = [];
 
-        var elms = doc.select('div.infotag a');
-        if(elms.length == 0){
-            genres.push({
-                title: "no element",
-                input: "",
-                script: "gen2.js"
-            })
-        }
-        elms.forEach(element => {
-            genres.push({
-                title: element.text().trim(),
-                input: element.attr('href').replace("/tag/", "/") + "/{0}/",
-                script: "gen2.js"
-            })
-        });
-
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
             script: "author.js"
         })
+
+        var elms = doc.select('div.infotag a');
+        if(elms.length == 0) {
+            genres.push({
+				title: "No Tags",
+				input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
+				script: "gen.js"
+			})
+        }
+        elms.forEach(function(e) {
+			genres.push({
+				title: e.text().trim(),
+				input: e.attr('href').replace("/tag/", "/") + "/{0}/",
+				script: "gen2.js"
+			})
+		});
 
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
