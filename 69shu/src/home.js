@@ -3,9 +3,10 @@ function execute() {
         { title: "诸天流", input: "/诸天流/{0}/", script: "gen2.js" },
         { title: "无限流", input: "/无限流/{0}/", script: "gen2.js" },
 
-        {title: "不限新书榜", input: "/ajax_novels/newhot_0_0_{0}.htm", script: "gen.js"},
-        {title: "连载新书榜", input: "/ajax_novels/newhot_0_2_{0}.htm", script: "gen.js"},
-        {title: "全本新书榜", input: "/ajax_novels/newhot_0_1_{0}.htm", script: "gen.js"},
+        // {title: "不限新书榜", input: "/ajax_novels/newhot_0_0_{0}.htm", script: "gen.js"},
+        // {title: "连载新书榜", input: "/ajax_novels/newhot_0_2_{0}.htm", script: "gen.js"},
+        // {title: "全本新书榜", input: "/ajax_novels/newhot_0_1_{0}.htm", script: "gen.js"},
+        {title: "官场职场", input: "/ajax_novels/full/10/{0}.htm", script: "gen.js"},
 
         {title: "不限人气", input: "/ajax_novels/monthvisit_0_0_{0}.htm", script: "gen.js"},
         {title: "连载人气", input: "/ajax_novels/monthvisit_0_2_{0}.htm", script: "gen.js"},
