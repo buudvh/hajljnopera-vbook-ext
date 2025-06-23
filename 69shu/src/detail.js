@@ -16,16 +16,18 @@ function execute(url) {
             script: "author.js"
         })
 
-        let chapelm = doc.select("#tagul")
-        let elems = chapelm.select("a");
-        elems.forEach(function(e) {
-			genres.push({
-				title: e.text().trim(),
-				input: e.attr('href').replace("/tag/", "/") + "{0}/",
-				script: "gen2.js"
-			})
-		});
-
+        let bookInfor = getBookInfor(doc);
+        if (bookInfor) {
+            let tags = bookInfor.tags.split('|');
+            for (let i = 0; i < tags.length; i++) {
+                genres.push({
+                    title: tags[i],
+                    input: "/" + tags[i] + "/{0}/",
+                    script: "gen2.js"
+                })
+            }
+        }
+        
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
             cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
@@ -43,4 +45,23 @@ function encodeAuhtorUrl(url){
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
     let author = GBK.encode(url.replace(baseUrl, ""));
     return baseUrl + author;
+}
+
+function getBookInfor(doc){
+    let start = doc.indexOf('var bookinfo =');
+    if (start == -1) return null;
+    const slice = html.slice(start);
+
+    let bookinfoText = slice
+        .replace(/^.*?=\s*/, '')       // bỏ phần "var bookinfo ="
+        .replace(/;\s*$/, '')          // bỏ dấu ; ở cuối
+        .split('</script>')[0];        // cắt nếu còn phần sau
+
+    // Ép object thành JSON bằng replace
+    bookinfoText = bookinfoText
+        .replace(/(\w+):/g, '"$1":')   // key: → "key":
+        .replace(/,\s*}/g, '}')        // bỏ dấu phẩy cuối
+        .replace(/,\s*]/g, ']');
+
+    return JSON.parse(bookinfoText);
 }
