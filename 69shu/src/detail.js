@@ -9,13 +9,8 @@ function execute(url) {
     if (response.ok) {
         let doc = response.html('gbk');
         let genres = [];
-        genres.push({
-            title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-            input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
-            script: "author.js"
-        })
 
-        var elms = $.QA(doc, 'div.infotag > a');
+        var elms = doc.select('div.infotag a');
         if(elms.length == 0){
             genres.push({
                 title: "no element",
@@ -30,6 +25,12 @@ function execute(url) {
                 script: "gen2.js"
             })
         });
+
+        genres.push({
+            title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
+            input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
+            script: "author.js"
+        })
 
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
