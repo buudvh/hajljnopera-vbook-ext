@@ -1,7 +1,11 @@
 load('libs.js');
 load('config.js');
 
-function execute(url) {
+function execute(url, page) {
+    page = page || '1';
+    url = url.substring(1, url.lastIndexOf('.'));
+    url = 'ajax_' + url + '/' + page + '.htm';
+    url = "https://www.69shuba.com/" + url;
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html('gbk');
@@ -17,7 +21,8 @@ function execute(url) {
                 host: BASE_URL
             })
         })
-        return Response.success(data);
+        let next = parseInt(page, 10) + 1;
+        return Response.success(data, next);
     }
     return null;
 }

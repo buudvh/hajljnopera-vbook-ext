@@ -21,13 +21,15 @@ function execute(url) {
                     title: "同作者",
                     input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
                     script: "author.js"
-                },
+                }
+            ],
+            genres:[
                 {
-                    title: "同分类:" + $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim(),
+                    title: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim(),
                     input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
                     script: "author.js"
                 }
-            ],
+            ]
         })
     }
     return null;
