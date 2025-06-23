@@ -11,7 +11,7 @@ function execute(url) {
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             input: decodeURIComponent($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr('href')),
-            script: "gen2.js"
+            script: "author.js"
         })
 
         let tag = doc.select("#tagul");
@@ -19,7 +19,7 @@ function execute(url) {
         elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
-                input: BASE_URL + element.attr('href'),
+                input: element.attr('href').replace("/tag/", "/") + "/{0}/",
                 script: "gen2.js"
             })
         });
