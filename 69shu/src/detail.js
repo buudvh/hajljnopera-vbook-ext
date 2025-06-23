@@ -21,6 +21,11 @@ function execute(url) {
                     title: "同作者",
                     input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
                     script: "author.js"
+                },
+                {
+                    title: "同分类",
+                    input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
+                    script: "author.js"
                 }
             ],
         })
