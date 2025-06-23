@@ -14,7 +14,8 @@ function execute(url) {
             script: "gen2.js"
         })
 
-        let elms = doc.select("#tagul a");
+        let tag = doc.select("#tagul");
+        let elms = tag.select("a");
         elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
