@@ -29,21 +29,6 @@ function execute(url) {
     return null;
 }
 
-
-// function formatName(name) {
-//     var re = /^(\d+)\.第(\d+)章\s*/;
-//     let result = name.replace(re, '第$2章 ');
-
-//     let lastParenIndex = Math.max(result.lastIndexOf('('), result.lastIndexOf('（'));
-
-//     if (lastParenIndex !== -1) {
-//         result = result.slice(0, lastParenIndex);
-//     }
-
-//     result = result.replace(/[【].*$/, '');
-
-//     return result.trim();
-// }
 function formatName(name) {
     const re = /^(\d+)\.第(\d+)章\s*/;
     let result = name.replace(re, '第$2章 ');

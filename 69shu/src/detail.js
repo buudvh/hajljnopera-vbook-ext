@@ -10,14 +10,15 @@ function execute(url) {
         let genres = [];
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-            input: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr('href'),
+            input: decodeURIComponent($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr('href')),
             script: "gen2.js"
         })
 
-        doc.select("#tagul a").forEach(element => {
+        let elms = doc.select("#tagul a");
+        elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
-                input: element.attr('href'),
+                input: BASE_URL + element.attr('href'),
                 script: "gen2.js"
             })
         });
