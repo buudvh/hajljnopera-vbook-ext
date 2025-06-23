@@ -1,6 +1,6 @@
 load('libs.js');
 load('config.js');
-load('encoding.js');
+load('gbk.js');
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
@@ -11,7 +11,7 @@ function execute(url) {
         let genres = [];
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-            input: decodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
+            input: encodeAuhtorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href")),
             script: "author.js"
         })
 
@@ -37,23 +37,8 @@ function execute(url) {
     return null;
 }
 
-function decodeAuhtorUrl(url){
+function encodeAuhtorUrl(url){
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
-    let author = encodeToGBKUrl(url.replace(baseUrl, ""));
+    let author = GBK.encode(url.replace(baseUrl, ""));
     return baseUrl + author;
-}
-
-function encodeToGBKUrl(str) {
-    const bytes = Encoding.convert(str, {
-        to: 'GB2312',
-        from: 'UNICODE',
-        type: 'array'
-    });
-
-    let encoded = '';
-    for (let i = 0; i < bytes.length; i++) {
-        const hex = bytes[i].toString(16).toUpperCase();
-        encoded += '%' + (hex.length === 1 ? '0' + hex : hex);
-    }
-    return encoded;
 }
