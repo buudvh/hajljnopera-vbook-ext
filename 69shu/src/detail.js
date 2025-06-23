@@ -16,11 +16,12 @@ function execute(url) {
             script: "author.js"
         })
 
-        var elms = $.Q(doc, '#tagul > a');
-        elms.forEach(function(e) {
+        let chapelm = doc.select("#tagul")
+        let elems = chapelm.select("a");
+        elems.forEach(function(e) {
 			genres.push({
 				title: e.text().trim(),
-				input: e.attr('href').replace("/tag/", "/") + "/{0}/",
+				input: e.attr('href').replace("/tag/", "/") + "{0}/",
 				script: "gen2.js"
 			})
 		});
