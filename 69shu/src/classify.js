@@ -3,6 +3,7 @@ load('config.js');
 
 function execute(url, page) {
     page = page || '1';
+    url = url.replace("https://www.69shuba.com", "");
     url = url.substring(1, url.lastIndexOf('.'));
     url = 'ajax_' + url + '/' + page + '.htm';
     url = "https://www.69shuba.com/" + url;
@@ -21,8 +22,8 @@ function execute(url, page) {
                 host: BASE_URL
             })
         })
-        let next = parseInt(page, 10) + 1;
-        return Response.success(data, next);
+        var next = parseInt(page, 10) + 1;
+        return Response.success(data, next.toString());
     }
     return null;
 }
