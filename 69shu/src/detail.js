@@ -15,7 +15,7 @@ function execute(url) {
             script: "author.js"
         })
 
-        var elms = $.QA(doc, '.tagul > a');
+        var elms = $.QA(doc, 'div.infotag > a');
         elms.forEach(element => {
             genres.push({
                 title: element.text().trim(),
