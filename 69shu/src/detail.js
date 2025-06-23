@@ -16,14 +16,7 @@ function execute(url) {
             script: "author.js"
         })
 
-        var elms = doc.select('div.infotag a');
-        if(elms.length == 0) {
-            genres.push({
-				title: "No Tags",
-				input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
-				script: "gen.js"
-			})
-        }
+        var elms = $.Q(doc, '#tagul > a');
         elms.forEach(function(e) {
 			genres.push({
 				title: e.text().trim(),
