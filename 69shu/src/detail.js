@@ -10,7 +10,7 @@ function execute(url) {
         let genres = [];
         genres.push({
             title: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
-            input: decodeURIComponent($.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr('href')),
+            input: "https://www.69shuba.com/modules/article/author.php?author=%B0%AE%B3%D4%CC%C7%B3%E6%D7%D3",
             script: "author.js"
         })
 
