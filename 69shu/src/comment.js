@@ -13,14 +13,14 @@ function execute(bookid, next) {
         let doc = response.html();
         let comments = [];
         let listCmtElm = doc.select('div.flex')
-        listCmtElm.forEach(e => {
+        listCmtElm.forEach(function (e) {
             comments.push({
                 name: e.select('div.sec-bot a').text(),
                 content: e.select('div.sec-top').text(),
             });
         });
 
-        var nextpage = parseInt(next) + listCmtElm.length;
+        var nextpage = parseInt(next, 100) + listCmtElm.length;
         if (listCmtElm.length > 0) {
             return Response.success(comments, nextpage + "");
         }
