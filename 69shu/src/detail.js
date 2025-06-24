@@ -17,7 +17,7 @@ function execute(url) {
         });
 
         let script = doc.select("html").text();
-        if(script.indexOf('var bookinfo =') == -1) genres.push({
+        if(script.length == 0) genres.push({
                 title: "No body",
                 input: "/无标签/{0}/",
                 script: "gen2.js"
@@ -32,12 +32,6 @@ function execute(url) {
                     script: "gen2.js"
                 })
             }
-        }else{
-            genres.push({
-                title: "无标签",
-                input: "/无标签/{0}/",
-                script: "gen2.js"
-            })
         }
 
         return Response.success({
