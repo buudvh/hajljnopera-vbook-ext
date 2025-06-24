@@ -16,7 +16,7 @@ function execute(url) {
             script: "classify.js"
         });
 
-        let script = doc.select("body").html();
+        let script = doc.select("html").html();
         if(script.indexOf('var bookinfo =') == -1) genres.push({
                 title: "No body",
                 input: "/无标签/{0}/",
