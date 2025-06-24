@@ -14,12 +14,12 @@ function execute(key, page) {
 
     if (response.ok) {
         let doc = response.html()
-        let next = doc.select(".pagination").select("li.active + li").text()
-        let el = doc.select("#searchviewdiv a.booksearch")
+        let next = doc.select(".pagination li.active + li").text()
+        let el = doc.select("#search-containter a.booksearch")
         let data = [];
         el.forEach(e => {
             let stv_story_link = e.select("a").first().attr("href");
-            let bookid = stv_story_link.split("/")[3];
+            let bookid = stv_story_link.split("/")[4];
             data.push({
                 name: toCapitalize(e.select(".searchbooktitle").first().text()),
                 link: SHU69_HOST + "book/" + bookid + ".htm",
@@ -28,6 +28,7 @@ function execute(key, page) {
                 host: ""
             })
         });
+        
         return Response.success(data, next)
     }
     return null;
