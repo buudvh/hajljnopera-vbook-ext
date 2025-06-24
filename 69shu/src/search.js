@@ -1,8 +1,7 @@
 load('libs.js');
+load('config.js');
 function execute(key, page) {
     let arrKey = key.split("&");
-    const STVHOST = "http://14.225.254.182";
-    const SHU69_HOST = "https://www.69shuba.com/"
     if (!page) page = '1';
     let sort = 'viewday';
     if (arrKey.length == 2) {

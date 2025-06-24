@@ -20,6 +20,14 @@ function execute(url) {
             script: "classify.js"
         });
 
+        let comments = [];
+
+        comments.push({
+            title: "评论",
+            input: bookid,
+            script: "comment.js"
+        });
+
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
             cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
@@ -34,7 +42,8 @@ function execute(url) {
                     script: "author.js"
                 }
             ],
-            genres: genres
+            genres: genres,
+            comments: comments
         })
     }
     return null;
