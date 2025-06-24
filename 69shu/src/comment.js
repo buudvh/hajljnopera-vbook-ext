@@ -20,7 +20,7 @@ function execute(bookid, next) {
             });
         });
 
-        var nextpage = parseInt(next, 100) + listCmtElm.length;
+        var nextpage = e.select('#cmtwd').attr('data-start');
         if (listCmtElm.length > 0) {
             return Response.success(comments, nextpage + "");
         }
