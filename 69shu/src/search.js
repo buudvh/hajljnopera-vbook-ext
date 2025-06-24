@@ -3,7 +3,8 @@ function execute(key, page) {
     const STVHOST = "http://14.225.254.182";
     const SHU69_HOST = "https://www.69shuba.com/"
     if (!page) page = '1';
-    let response = fetch(STVHOST + '/io/searchtp/searchBooks/?find=&findinname=' + key + '&host=69shu&minc=0&tag=&p=' + page);
+    let url = STVHOST + '/io/searchtp/searchBooks/?find=&findinname=' + key + '&host=69shu&minc=0&tag=&p=' + page;
+    let response = fetch(url);
     function toCapitalize(sentence) {
         const words = sentence.split(" ");
 
@@ -28,8 +29,14 @@ function execute(key, page) {
                 host: ""
             })
         });
-        
+
         return Response.success(data, next)
     }
-    return null;
+    return Response.success([{
+        name: "BUG: " + url + " failed to fetch: " + response.status,
+        link: "",
+        cover: "",
+        description: "",
+        host: ""
+    }], 2);
 }
