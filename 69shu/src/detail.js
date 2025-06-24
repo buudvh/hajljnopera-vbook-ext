@@ -4,17 +4,37 @@ load('gbk.js');
 
 function execute(url) {
     url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
-    url = url.replace("/txt/","/book/")
+    url = url.replace("/txt/", "/book/")
     let response = fetch(url);
     if (response.ok) {
         let doc = response.html('gbk');
-        
+
+        let genres = [];
+        genres.push({
+            title: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim(),
+            input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
+            script: "classify.js"
+        });
+
+        let script = doc.select("body > script:nth-child(1)").text();
+        let bookInfor = getBookInfor(script);
+        if (bookInfor) {
+            let tags = bookInfor.tags.split('|');
+            for (let i = 0; i < tags.length; i++) {
+                genres.push({
+                    title: tags[i],
+                    input: "/" + tags[i] + "/{0}/",
+                    script: "gen2.js"
+                })
+            }
+        }
+
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
             cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
             author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             description: $.Q(doc, 'div.navtxt > p').html(),
-            detail: $.QA(doc, 'div.booknav2 p', {m: x => x.text(), j: '<br>'}),
+            detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' }),
             host: BASE_URL,
             suggests: [
                 {
@@ -23,25 +43,19 @@ function execute(url) {
                     script: "author.js"
                 }
             ],
-            genres:[
-                {
-                    title: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim(),
-                    input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
-                    script: "classify.js"
-                }
-            ]
+            genres: genres
         })
     }
     return null;
 }
 
-function encodeAuhtorUrl(url){
+function encodeAuhtorUrl(url) {
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
     let author = GBK.encode(url.replace(baseUrl, ""));
     return baseUrl + author;
 }
 
-function getBookInfor(doc){
+function getBookInfor(doc) {
     let start = doc.indexOf('var bookinfo =');
     if (start == -1) return null;
     const slice = html.slice(start);
