@@ -9,11 +9,21 @@ function execute() {
         {title: "官场职场", input: "/ajax_novels/full/10/{0}.htm", script: "gen.js"},
 
         {title: "诸天流 - 最新入库", input: "chư thiên&new", script: "search.js"},
+        {title: "诸天流 - 最新更新", input: "chư thiên&update", script: "search.js"},
+        {title: "诸天流 - 总阅读量", input: "chư thiên&view", script: "search.js"},
+        {title: "诸天流 - 本周阅读量", input: "chư thiên&viewweek", script: "search.js"},
+        {title: "诸天流 - 今日阅读量", input: "chư thiên&viewday", script: "search.js"},
+        {title: "诸天流 - 点赞数", input: "chư thiên&like", script: "search.js"},
+        {title: "诸天流 - 关注数", input: "chư thiên&following", script: "search.js"},
+        {title: "诸天流 - 收藏数", input: "chư thiên&bookmarked", script: "search.js"},
+
         {title: "聊天群 - 最新入库", input: "chat group&new", script: "search.js"},
+
         {title: "最新入库", input: "&new", script: "search.js"},
         {title: "最新更新", input: "&update", script: "search.js"},
         {title: "本周阅读量", input: "&viewweek", script: "search.js"},
         {title: "今日阅读量", input: "&viewday", script: "search.js"},
+        {title: "总阅读量", input: "&view", script: "search.js"},
         {title: "点赞数", input: "&like", script: "search.js"},
         {title: "关注数", input: "&following", script: "search.js"},
         {title: "收藏数", input: "&bookmarked", script: "search.js"},
