@@ -5,7 +5,9 @@ function execute(url) {
     const regex = /\/(\d+)\.htm/;
     const match = url.match(regex);
     let book_id = match[1];
-    console.log(book_id)
+    if(url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1){
+        book_id = url.match(/\d+/)[0];
+    }
     let response = fetch(BASE_URL + "/book/" + book_id +"/");
     if (response.ok) {
         let doc = response.html('gbk');
