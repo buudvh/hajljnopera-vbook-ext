@@ -25,5 +25,11 @@ function execute(url, page) {
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
     }
-    return null;
+    return Response.success([{
+                name: "BUG:"  + url,
+                link: "",
+                cover: "",
+                description: "",
+                host: ""
+            }], 11);;
 }
