@@ -1,55 +1,34 @@
 load('libs.js');
-load('config.js');
-
 function execute(key, page) {
+    const STVHOST = "http://14.225.254.182";
+    const SHU69_HOST = "https://www.69shuba.com/"
+    if (!page) page = '1';
+    let response = fetch(STVHOST + '/?find=&findinname=' + key + '&host=69shu&minc=0&tag=&p=' + page);
+    function toCapitalize(sentence) {
+        const words = sentence.split(" ");
 
-
-    // gb18030, gbk uri encode
-    // '打更人' --> '%B4%F2%B8%FC%C8%CB'
-    // https://www.69shu.com/modules/article/search.php?searchkey=%B4%F2%B8%FC%C8%CB&searchtype=all
-    var gbkEncode = function(s) {
-        load('gbk.js');
-        return GBK.encode(s);
+        return words.map((word) => {
+            return word[0].toUpperCase() + word.substring(1);
+        }).join(" ");
     }
 
-    var url = String.format('{0}/modules/article/search.php?searchkey={1}&searchtype=all', host, gbkEncode(key));
-    // log(url);
-
-    let response = fetch(url);
     if (response.ok) {
-        let doc = response.html('gbk');
-
-        var data = [];
-
-        var elems = $.QA(doc, '.newbox li');
-        if (elems.length) {
-            elems.forEach(function(e) {
-                data.push({
-                    name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
-                    link: $.Q(e, '.newnav > a').attr('href'),
-                    cover: $.Q(e, '.imgbox > img').attr('data-src').trim(),
-                    description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
-                    host: BASE_URL
-                })
+        let doc = response.html()
+        let next = doc.select(".pagination").select("li.active + li").text()
+        let el = doc.select("#searchviewdiv a.booksearch")
+        let data = [];
+        el.forEach(e => {
+            let stv_story_link = e.select("a").first().attr("href");
+            let bookid = stv_story_link.split("/")[3];
+            data.push({
+                name: toCapitalize(e.select(".searchbooktitle").first().text()),
+                link: SHU69_HOST + "book/" + bookid + ".htm",
+                cover: e.select("img").first().attr("src"),
+                description: e.select(" div > span.searchtag").last().text(),
+                host: ""
             })
-
-            return Response.success(data);
-        }
-
-        // '大奉'
-        // https://www.69shu.com/modules/article/search.php?searchkey=%B4%F3%B7%EE&searchtype=all
-        if ($.Q(doc, 'div.booknav2 > h1 > a').text()) { // detail.js
-            return Response.success([{
-                name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
-                link: $.Q(doc, 'div.booknav2 > h1 > a').attr('href'),
-                cover: $.Q(doc, 'div.bookimg2 > img').attr('src'),
-                description: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(), // author
-                host: BASE_URL
-            }]);
-        }
-
-        return Response.error(key);
+        });
+        return Response.success(data, next)
     }
-    
     return null;
 }
