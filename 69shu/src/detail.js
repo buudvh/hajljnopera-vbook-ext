@@ -16,24 +16,6 @@ function execute(url) {
             script: "classify.js"
         });
 
-        let script = doc.select("html").text();
-        if(script.indexOf("<script>") == -1) genres.push({
-                title: "No body",
-                input: "/无标签/{0}/",
-                script: "gen2.js"
-            })
-        let bookInfor = getBookInfor(script);
-        if (bookInfor) {
-            let tags = bookInfor.tags.split('|');
-            for (let i = 0; i < tags.length; i++) {
-                genres.push({
-                    title: tags[i],
-                    input: "/" + tags[i] + "/{0}/",
-                    script: "gen2.js"
-                })
-            }
-        }
-
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
             cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
