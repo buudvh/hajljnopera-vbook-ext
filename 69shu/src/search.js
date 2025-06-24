@@ -15,8 +15,8 @@ function execute(key, page) {
 
     if (response.ok) {
         let doc = response.html()
-        let next = doc.select(".pagination li.active + li").text()
-        let el = doc.select("#search-containter a.booksearch")
+        let next = parseInt(page, 10) + 1;
+        let el = doc.select("a.booksearch")
         let data = [];
         el.forEach(e => {
             let stv_story_link = e.select("a").first().attr("href");
@@ -30,7 +30,7 @@ function execute(key, page) {
             })
         });
 
-        return Response.success(data, next)
+        return Response.success(data, next.toString());
     }
     return Response.success([{
         name: "BUG: " + url + " failed to fetch: " + response.status,
