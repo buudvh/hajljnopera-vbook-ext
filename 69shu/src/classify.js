@@ -12,13 +12,7 @@ function execute(url, page) {
         let doc = response.html('gbk');
         var data = [];
         var elems = $.QA(doc, 'li');
-        if (!elems.length) return Response.success([{
-                name: "BUG:"  + url,
-                link: "",
-                cover: "",
-                description: "",
-                host: ""
-            }], 11);
+        if (!elems.length) return Response.error(url);
         elems.forEach(function(e) {
             data.push({
                 name: $.Q(e, '.newnav h3 > a:not([class])').text().trim(),
@@ -31,11 +25,5 @@ function execute(url, page) {
         var next = parseInt(page, 10) + 1;
         return Response.success(data, next.toString());
     }
-    return Response.success([{
-                name: "BUG:"  + url,
-                link: "",
-                cover: "",
-                description: "",
-                host: ""
-            }], 11);
+    return null;
 }
