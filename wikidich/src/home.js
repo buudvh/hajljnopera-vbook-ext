@@ -6,12 +6,12 @@ function execute() {
         {
             "title": "Chương mới",
             "script": "gen.js",
-            "input": BASE_URL + "https://truyenwikidich.net/chuong-moi?gender=5794f03dd7ced228f4419196"
+            "input": BASE_URL + "/chuong-moi?gender=5794f03dd7ced228f4419196"
         },
         {
             "title": "Mới cập nhật",
             "script": "gen.js",
-            "input": BASE_URL + "tim-kiem?qs=1&gender=5794f03dd7ced228f4419196&m=6&so=4&y=" + year + "&vo=1"
+            "input": BASE_URL + "/tim-kiem?qs=1&gender=5794f03dd7ced228f4419196&m=6&so=4&y=" + year + "&vo=1"
         },
         {
             "title": "Rating",
