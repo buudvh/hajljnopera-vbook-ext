@@ -17,6 +17,11 @@ function execute(url) {
         });
 
         let script = doc.select("body").html();
+        if(script.length == 0) genres.push({
+                title: "No body",
+                input: "/无标签/{0}/",
+                script: "gen2.js"
+            })
         let bookInfor = getBookInfor(script);
         if (bookInfor) {
             let tags = bookInfor.tags.split('|');
@@ -27,6 +32,12 @@ function execute(url) {
                     script: "gen2.js"
                 })
             }
+        }else{
+            genres.push({
+                title: "无标签",
+                input: "/无标签/{0}/",
+                script: "gen2.js"
+            })
         }
 
         return Response.success({
