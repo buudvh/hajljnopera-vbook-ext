@@ -17,7 +17,7 @@ function execute(url) {
         });
 
         let script = doc.select("html").text();
-        if(script.length == 0) genres.push({
+        if(script.indexOf("<script>") == -1) genres.push({
                 title: "No body",
                 input: "/无标签/{0}/",
                 script: "gen2.js"
