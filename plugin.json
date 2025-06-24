@@ -84,6 +84,15 @@
       "source": "https://www.idejian.com",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/idejian/icon.png",
       "description": "Đọc truyện trên trang https://bookshelf.html5.qq.com"
+    },
+    {
+      "name": "wikidich custom truyện nam",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/wikidich/wikidich.zip",
+      "version": 2,
+      "source": "https://truyenwikidich.net/",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/wikidich/icon.png",
+      "description": "Đọc truyện trên trang https://truyenwikidich.net/"
     }
   ]
 }

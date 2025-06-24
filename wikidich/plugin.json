@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "name": "wikidich custom truyện nam",
+    "author": "HuongMT",
+    "version": 1,
+    "source": "https://truyenwikidich.net",
+    "regexp": "(www.)?(.*?)wiki(.*?)/truyen/[^/]+/?$",
+    "description": "Đọc truyện trên trang Wiki Dịch, review ở thông tin truyện",
+    "locale": "vi_VN",
+    "type": "novel",
+    "language": "javascript"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "search": "search.js",
+    "toc": "toc.js",
+    "chap": "chap.js"
+  },
+  "config": {
+    "thread_num": 1,
+    "delay": 3000
+  }
+}
