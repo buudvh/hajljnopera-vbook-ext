@@ -16,7 +16,7 @@ function execute(url) {
             script: "classify.js"
         });
 
-        let script = doc.select("body > script:nth-child(1)").text();
+        let script = doc.select("body").html();
         let bookInfor = getBookInfor(script);
         if (bookInfor) {
             let tags = bookInfor.tags.split('|');
