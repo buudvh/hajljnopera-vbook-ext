@@ -2,31 +2,33 @@ load('libs.js');
 load('config.js');
 
 function execute(url) {
-    const regex = /\/(\d+)\.htm/;
-    const match = url.match(regex);
-    let book_id = match[1];
-    if(url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1){
+    let book_id = "";
+    if (url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1) {
         book_id = url.match(/\d+/)[0];
+    } else {
+        const regex = /\/(\d+)\.htm/;
+        const match = url.match(regex);
+        book_id = match[1];
     }
-    let response = fetch(BASE_URL + "/book/" + book_id +"/");
+    let response = fetch(BASE_URL + "/book/" + book_id + "/");
     if (response.ok) {
         let doc = response.html('gbk');
 
-		var data = [];
-		var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
-		
-		elems.forEach(function(e) {
-			data.push({
-				name: formatName(e.text()),
-				url: e.attr('href'),
-				host: BASE_URL,
+        var data = [];
+        var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
+
+        elems.forEach(function (e) {
+            data.push({
+                name: formatName(e.text()),
+                url: e.attr('href'),
+                host: BASE_URL,
                 id: e.attr('data-num')
-			})
-		});
+            })
+        });
 
         data = data.reverse();
 
-		return Response.success(data);
+        return Response.success(data);
     }
     return null;
 }
