@@ -19,10 +19,7 @@ function execute(bookid, next) {
             let listCmtElm = doc.select('div.flex')
 
             if (listCmtElm.length == 0) {
-                return Response.success([{
-                    name: "LOG BUG",
-                    content: "bookid: " + bookid + " next: " + next + "  length: " + listCmtElm.length,
-                }], null);
+                return Response.success(comments, null);
             }
 
             listCmtElm.forEach(function (elm) {
@@ -33,7 +30,7 @@ function execute(bookid, next) {
             });
 
             var nextpage = doc.select('#cmtwd').attr('data-start');
-            if (listCmtElm.length > 0) {
+            if (nextpage != next) {
                 return Response.success(comments, nextpage + "");
             }
 
