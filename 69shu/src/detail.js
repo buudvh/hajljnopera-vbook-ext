@@ -29,7 +29,7 @@ function execute(url) {
         let comments = [];
 
         comments.push({
-            title: "评论",
+            title: "评论 (" + "bookid: " + bookid + ")",
             input: bookid,
             script: "comment.js"
         });
