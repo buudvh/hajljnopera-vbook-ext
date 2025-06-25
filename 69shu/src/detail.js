@@ -26,11 +26,11 @@ function execute(url) {
 
         let comments = [];
 
-        // comments.push({
-        //     title: "评论",
-        //     input: bookid,
-        //     script: "comment.js"
-        // });
+        comments.push({
+            title: "评论",
+            input: bookid,
+            script: "comment.js"
+        });
 
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),

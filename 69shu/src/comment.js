@@ -13,6 +13,10 @@ function execute(bookid, next) {
         let doc = response.html();
         let comments = [];
         let listCmtElm = doc.select('div.flex')
+        comments.push({
+            name: "LOG BUG",
+            content: "bookid: " + bookid + " next: " + next + " listCmtElm: " + listCmtElm.length,
+        });
         listCmtElm.forEach(function (e) {
             comments.push({
                 name: e.select('div.sec-bot a').text(),
@@ -28,5 +32,8 @@ function execute(bookid, next) {
         return Response.success(comments, null);
     }
 
-    return null;
+    return Response.success([{
+        name: "LOG BUG",
+        content: "bookid: " + bookid + " next: " + next + "  status: " + response.status,
+    }], null);
 }
