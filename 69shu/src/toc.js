@@ -4,7 +4,7 @@ load('config.js');
 function execute(url) {
     let book_id = "";
     if (url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1) {
-        book_id = url.match(/\d+/)[0];
+        book_id = url.match(/\/(\d+)\/?$/)[1];
     } else {
         const regex = /\/(\d+)\.htm/;
         const match = url.match(regex);

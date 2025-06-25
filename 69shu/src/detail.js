@@ -5,7 +5,7 @@ load('gbk.js');
 function execute(url) {
     let bookid = "";
     if (url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1) {
-        bookid = url.match(/\d+/)[0];
+        bookid = url.match(/\/(\d+)\/?$/)[1];
         url = BASE_URL + "/book/" + bookid + ".htm";
     } else {
         url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
