@@ -29,7 +29,7 @@ function execute(url) {
         let comments = [];
 
         comments.push({
-            title: "评论 (" + "bookid: " + bookid + ")",
+            title: "评论",
             input: bookid,
             script: "comment.js"
         });
@@ -39,7 +39,7 @@ function execute(url) {
             cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
             author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             description: $.Q(doc, 'div.navtxt > p').html(),
-            detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' }),
+            detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' }) + '<br>' + 'Bookid: ' + bookid + '<br>',
             host: BASE_URL,
             suggests: [
                 {
