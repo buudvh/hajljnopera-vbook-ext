@@ -19,8 +19,8 @@ function execute(url) {
 
         let genres = [];
         genres.push({
-            title: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim(),
-            input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href"),
+            title: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').text().trim() || "没有标签",
+            input: $.Q(doc, 'div.booknav2 > p:nth-child(3) > a').attr("href") || "https://www.69shuba.com/novels/class/0.htm",
             script: "classify.js"
         });
 
