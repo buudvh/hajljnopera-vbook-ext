@@ -18,19 +18,21 @@ function execute(bookid, next) {
             let comments = [];
             let listCmtElm = doc.select('div.flex')
 
-            comments.push({
-                name: "LOG BUG",
-                content: "bookid: " + bookid + " next: " + next + " listCmtElm: " + listCmtElm.length,
-            });
+            if (listCmtElm.length == 0) {
+                return Response.success([{
+                    name: "LOG BUG",
+                    content: "bookid: " + bookid + " next: " + next + "  length: " + listCmtElm.length,
+                }], null);
+            }
 
-            listCmtElm.forEach(function (e) {
+            listCmtElm.forEach(function (elm) {
                 comments.push({
-                    name: e.select('div.sec-bot a').text(),
-                    content: e.select('div.sec-top').text(),
+                    name: elm.select('div.sec-bot a').text(),
+                    content: elm.select('div.sec-top').text(),
                 });
             });
 
-            var nextpage = e.select('#cmtwd').attr('data-start');
+            var nextpage = doc.select('#cmtwd').attr('data-start');
             if (listCmtElm.length > 0) {
                 return Response.success(comments, nextpage + "");
             }
@@ -42,10 +44,10 @@ function execute(bookid, next) {
             name: "LOG BUG",
             content: "bookid: " + bookid + " next: " + next + "  status: " + response.status,
         }], null);
-    } catch (e) {
+    } catch (ex) {
         return Response.success([{
             name: "LOG BUG",
-            content: "bookid: " + bookid + " next: " + next + "  exception: " + e.message,
+            content: "bookid: " + bookid + " next: " + next + "  exception: " + ex.message,
         }], null);
     }
 }

@@ -10,7 +10,9 @@ function execute(url) {
     } else {
         url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
         url = url.replace("/txt/", "/book/")
-        bookid = url.match(/\d+/)[0];
+        const regex = /\/(\d+)\.htm/;
+        const match = url.match(regex);
+        bookid = match[1];
     }
 
     let response = fetch(url);
