@@ -3,6 +3,9 @@ function execute(bookid, next) {
     if (!next) next = "0"
     let response = fetch("http://14.225.254.182/io/comment/webComments", {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             "start": next,
             "objectid": bookid,
