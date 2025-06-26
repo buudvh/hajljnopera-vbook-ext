@@ -1,7 +1,7 @@
 load('libs.js');
 load('config.js');
 function execute(tag, page) {
-    let url = STVHOST + '/io/searchtp/searchBooks/?find=&tag=' + tag +'&sort=update&host=69shu&minc=0&tag=&p=' + page;
+    let url = STVHOST + '/io/searchtp/searchBooks/?find=' + tag +'&sort=update&host=69shu&minc=0&tag=&p=' + page;
     let response = fetch(url);
     function toCapitalize(sentence) {
         const words = sentence.split(" ");
