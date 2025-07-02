@@ -10,7 +10,7 @@ function execute(key, page) {
     
     let url = `${STVHOST}/io/searchtp/searchBooks/?findinname=${arrKey[0]}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
     if(key.startsWith("find=")){
-        let url = `${STVHOST}/io/searchtp/searchBooks/?find=${arrKey[0]}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+        url = `${STVHOST}/io/searchtp/searchBooks/?find=${arrKey[0].replace("find=","")}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
     }
     let response = fetch(url);
     function toCapitalize(sentence) {
