@@ -12,7 +12,7 @@ function execute(url) {
                 data.push({
                     name: e.select("h3").text().trim(),
                     link: e.select("h3 a").attr('href'),
-                    cover: e.select("img").attr("data-src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+                    cover: e.select("img").attr("data-src") || DEFAULT_COVER,
                     description: $.Q(e, '.zxzj > p').text().replace('最近章节', ''),
                     host: BASE_URL
                 })
@@ -23,7 +23,7 @@ function execute(url) {
         return Response.success([{
             name: url + " - " + response.status,
             link: "",
-            cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+            cover: DEFAULT_COVER,
             description: "",
             host: BASE_URL
         }]);
@@ -31,7 +31,7 @@ function execute(url) {
         return Response.success([{
             name: url + " - " + e.message,
             link: "",
-            cover: "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+            cover: DEFAULT_COVER,
             description: "",
             host: BASE_URL
         }]);

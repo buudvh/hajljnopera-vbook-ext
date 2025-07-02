@@ -36,7 +36,7 @@ function execute(url) {
 
         return Response.success({
             name: $.Q(doc, 'div.booknav2 > h1 > a').text(),
-            cover: doc.select("div.bookimg2 > img").attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+            cover: doc.select("div.bookimg2 > img").attr("src") || DEFAULT_COVER,
             author: $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').text().trim(),
             description: $.Q(doc, 'div.navtxt > p').html(),
             detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' }) + '<br>' + '书籍编号: ' + bookid + '<br>',

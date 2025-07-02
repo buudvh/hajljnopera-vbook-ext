@@ -1,5 +1,31 @@
 function execute() {
     return Response.success([
+        {title: "诸天流 - 新入库", input: "chư thiên&new", script: "search.js"},
+        {title: "诸天流 - 新更新", input: "chư thiên&update", script: "search.js"},
+        {title: "诸天流 - 总阅读量", input: "chư thiên&view", script: "search.js"},
+        {title: "诸天流 - 本周阅读量", input: "chư thiên&viewweek", script: "search.js"},
+        {title: "诸天流 - 今日阅读量", input: "chư thiên&viewday", script: "search.js"},
+        {title: "诸天流 - 点赞数", input: "chư thiên&like", script: "search.js"},
+        {title: "诸天流 - 关注数", input: "chư thiên&following", script: "search.js"},
+        {title: "诸天流 - 收藏数", input: "chư thiên&bookmarked", script: "search.js"},
+
+        {title: "聊天群 - 新入库", input: "chat group&new", script: "search.js"},
+
+        {title: "官场职场 - 新更新", input: "quantruongcholamviec,", script: "tag.js"},
+        {title: "武侠 - 新更新", input: "vuhiep,", script: "tag.js"},
+        {title: "时空 - 新更新", input: "xuyenquathoikhong,", script: "tag.js"},
+        {title: "同人 - 新更新", input: "dongnhan,", script: "tag.js"},
+        {title: "玄幻魔法 - 新更新", input: "huyenhuyenmaphap,", script: "tag.js"},
+
+        {title: "新入库", input: "&new", script: "search.js"},
+        {title: "新更新", input: "&update", script: "search.js"},
+        {title: "本周阅读量", input: "&viewweek", script: "search.js"},
+        {title: "今日阅读量", input: "&viewday", script: "search.js"},
+        {title: "总阅读量", input: "&view", script: "search.js"},
+        {title: "点赞数", input: "&like", script: "search.js"},
+        {title: "关注数", input: "&following", script: "search.js"},
+        {title: "收藏数", input: "&bookmarked", script: "search.js"},
+        
         { title: "思路清奇", input: "/思路清奇/{0}/", script: "gen2.js" },
         { title: "穿越", input: "/穿越/{0}/", script: "gen2.js" },
         { title: "轻松", input: "/轻松/{0}/", script: "gen2.js" },

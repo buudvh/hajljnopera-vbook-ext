@@ -22,7 +22,7 @@ function execute(tag, page) {
             data.push({
                 name: toCapitalize(e.select(".searchbooktitle").first().text()),
                 link: SHU69_HOST + "book/" + bookid + ".htm",
-                cover: e.select("img").first().attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+                cover: e.select("img").first().attr("src") || DEFAULT_COVER,
                 description: e.select(" div > span.searchtag").last().text(),
                 host: ""
             })
