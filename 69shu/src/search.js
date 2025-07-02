@@ -8,9 +8,9 @@ function execute(key, page) {
         sort = arrKey[1];
     }
     
-    let url = `${STVHOST}/io/searchtp/searchBooks/?findinname=${arrKey[0]}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+    let url = `${STVHOST}/io/searchtp/searchBooks/?findinname=${encodeURIComponent(arrKey[0])}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
     if(key.startsWith("find=")){
-        url = `${STVHOST}/io/searchtp/searchBooks/?find=${arrKey[0].replace("find=","")}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+        url = `${STVHOST}/io/searchtp/searchBooks/?find=${encodeURIComponent(arrKey[0].replace("find=",""))}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
     }
     let response = fetch(url);
     function toCapitalize(sentence) {
