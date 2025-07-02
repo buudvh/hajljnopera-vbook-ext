@@ -7,7 +7,11 @@ function execute(key, page) {
     if (arrKey.length == 2) {
         sort = arrKey[1];
     }
-    let url = STVHOST + '/io/searchtp/searchBooks/?find=&findinname=' + arrKey[0] + '&sort=' + sort + '&host=69shu&minc=0&tag=&p=' + page;
+    
+    let url = `${STVHOST}/io/searchtp/searchBooks/?findinname=${arrKey[0]}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+    if(key.startsWith("find=")){
+        let url = `${STVHOST}/io/searchtp/searchBooks/?find=${arrKey[0]}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+    }
     let response = fetch(url);
     function toCapitalize(sentence) {
         const words = sentence.split(" ");
@@ -28,7 +32,7 @@ function execute(key, page) {
             data.push({
                 name: toCapitalize(e.select(".searchbooktitle").first().text()),
                 link: SHU69_HOST + "book/" + bookid + ".htm",
-                cover: e.select("img").first().attr("src") || "https://static.sangtacvietcdn.xyz/img/bookcover256.jpg",
+                cover: `https://static.69shuba.com/files/article/image/${bookid.slice(0, 2)}/${bookid}/${bookid}s.jpg`,
                 description: e.select(" div > span.searchtag").last().text(),
                 host: ""
             })
