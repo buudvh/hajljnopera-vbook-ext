@@ -11,7 +11,7 @@ function execute(url, page) {
 
     let data = [];
 
-    let elems = doc.select('div.bookinfo');
+    let elems = $.QA(doc, 'div.bookinfo');;
     if (!elems.length) return Response.error(url);
 
     elems.forEach(function(e) {
