@@ -93,6 +93,15 @@
       "source": "https://truyenwikidich.net/",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/wikidich/icon.png",
       "description": "Đọc truyện trên trang https://truyenwikidich.net/"
+    },
+    {
+      "name": "sto55",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/sto55/sto55.zip",
+      "version": 1,
+      "source": "https://sto55.com/",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/sto55/icon.png",
+      "description": "Đọc truyện trên trang https://sto55.com/"
     }
   ]
 }
