@@ -5,7 +5,7 @@ load('gbk.js');
 function execute(url) {
     let response = fetch(url);
     if (response.ok) {
-        let doc = response.html('gbk');
+        let doc = response.html();
 
         return Response.success({
             name: $.Q(doc, '#info > h1').text(),

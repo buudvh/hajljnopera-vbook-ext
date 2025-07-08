@@ -2,7 +2,7 @@
   "metadata": {
     "name": "biqubu3",
     "author": "HuongMT",
-    "version": 1,
+    "version": 2,
     "source": "https://www.biqubu3.com",
     "regexp": "https://www.biqubu3.com/book_\\d+/",
     "description": "Đọc truyện trên trang https://www.biqubu3.com",
