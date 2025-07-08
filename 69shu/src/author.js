@@ -8,6 +8,7 @@ function execute(url) {
             let doc = response.html('gbk');
             var data = [];
             var elems = doc.select("div.newbox li")
+            if (!elems.length) return Response.error(url);
             elems.forEach(function (e) {
                 data.push({
                     name: e.select("h3").text().trim(),
