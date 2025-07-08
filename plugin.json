@@ -102,6 +102,15 @@
       "source": "https://sto55.com/",
       "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/sto55/icon.png",
       "description": "Đọc truyện trên trang https://sto55.com/"
+    },
+    {
+      "name": "biqubu3",
+      "author": "HuongMT",
+      "path": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biqubu3/biqubu3.zip",
+      "version": 1,
+      "source": "https://www.biqubu3.com",
+      "icon": "https://raw.githubusercontent.com/damvanhoangbuu1/hajljnopera-vbook-ext/main/biqubu3/icon.png",
+      "description": "Đọc truyện trên trang https://www.biqubu3.com"
     }
   ]
 }
