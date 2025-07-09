@@ -4,7 +4,11 @@ function execute(url) {
     try {
         url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
-        let response = fetch(url);
+        let response = fetch(url, {
+            "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            }
+        });
 
         let doc;
         if (response.ok) {
@@ -27,7 +31,7 @@ function execute(url) {
             .replace(/^第\d+章.*?<br>/, '') // Ex: '  第11745章 大结局，终<br>'
             .replace('(本章完)', '')
             ;
-            
+
         return Response.success(htm);
     } catch (error) {
         return Response.success(`fetch ${url} failed: ${error.message}`);
