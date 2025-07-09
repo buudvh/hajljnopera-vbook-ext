@@ -2,7 +2,7 @@
   "metadata": {
     "name": "qidian-vp",
     "author": "HuongMT",
-    "version": 20,
+    "version": 21,
     "source": "https://qidian-vp.com/",
     "regexp": "qidian-vp.com/truyen/.*?",
     "description": "Đọc truyện trên trang qidian-vp.com",

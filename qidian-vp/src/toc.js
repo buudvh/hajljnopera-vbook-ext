@@ -1,7 +1,15 @@
 load('config.js')
 function execute(url) {
-    let response = fetch(url + "/muc-luc");
-    if (response.ok) {
+    try {
+        let response = fetch(url + "/muc-luc");
+
+        if (!response.ok) {
+            return Response.success([{
+                name: `error: ${response.status}`,
+                url: url + "/muc-luc"
+            }]);
+        }
+
         let doc = response.html();
         let elms = doc.select("#chapter-list a");
         const data = [];
@@ -12,6 +20,10 @@ function execute(url) {
             });
         })
         return Response.success(data);
+    } catch (error) {
+        return Response.success([{
+            name: `error: ${error.message}`,
+            url: url + "/muc-luc"
+        }]);
     }
-    return null;
 }
