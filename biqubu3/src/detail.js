@@ -3,8 +3,8 @@ load('config.js');
 load('gbk.js');
 
 function execute(url) {
-    let response = fetch(url);
     try {
+        let response = fetch(url);
         if (response.ok) {
             let doc = response.html();
 
