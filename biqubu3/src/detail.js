@@ -18,7 +18,14 @@ function execute(url) {
             })
 
         }
-        return null;
+        return Response.success({
+                name: 'BUG',
+                cover: DEFAULT_COVER,
+                author: '',
+                description: `failed to fetch: ${response.status}`,
+                detail: '',
+                host: BASE_URL,
+            });
     } catch (error) {
         return Response.success({
                 name: 'BUG',
