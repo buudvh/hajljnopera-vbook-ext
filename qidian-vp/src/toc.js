@@ -1,29 +1,18 @@
-load('libs.js');
-load('gbk.js');
+load('config.js')
 function execute(url) {
-    let charpters = [];
-    try {
-        let response = fetch(url);
-        if (response.ok) {
-            let doc = response.html();
-            let chapelm = doc.select("#chapter-list")
-            let elems = chapelm.select("a");
-            elems.forEach(function (e) {
-                charpters.push({
-                    name: e.select("h3").text(),
-                    url: e.attr('href'),
-                    host: "",
-                });
-            })
-            return Response.success(charpters);
+    let response = fetch(url + "/muc-luc");
+    if (response.ok) {
+        let doc = response.html();
+        let el = doc.select("#chapter-list a");
+        const data = [];
+        for (let i = 0; i < el.size(); i++) {
+            let e = el.get(i);
+            data.push({
+                name: e.select("h3").text(),
+                url: e.attr("href")
+            });
         }
-
-        return null;
-    } catch (error) {
-        return Response.success([{
-            name: error.message,
-            url: "",
-            host: "",
-        }]);
+        return Response.success(data);
     }
+    return null;
 }
