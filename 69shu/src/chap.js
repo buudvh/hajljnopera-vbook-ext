@@ -4,19 +4,26 @@ function execute(url) {
     try {
         url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
-        // let response = fetch(url);
+        let response = fetch(url);
 
-        // let doc;
-        // if (response.ok) {
-        //     doc = response.html('gbk');
-        // } else if (response.status == 403) {
-        //     var browser = Engine.newBrowser();
-        //     doc = browser.launch(url, 4000);
-        // } else {
-        //     return Response.success(`fetch ${url} failed: status ${response.status}`);
-        // }
-        var browser = Engine.newBrowser();
-        let doc = browser.launch(url, 4000);
+        let doc;
+        if (response.ok) {
+            doc = response.html('gbk');
+        } else if (response.status == 403) {
+            var browser = Engine.newBrowser();
+            if(!browser) {
+                return Response.success(`fetch ${url} failed: no browser`);
+            }else {
+                var content = ''
+                for (var prop in browser) {
+                    content += 'Property:', prop, 'Type:', typeof browser[prop] + '\n';
+                }
+                return Response.success(content);
+            }
+            doc = browser.launch(url, 4000);
+        } else {
+            return Response.success(`fetch ${url} failed: status ${response.status}`);
+        }
 
         var htm = doc.select(".txtnav")
         htm.select(".contentadv").remove()
