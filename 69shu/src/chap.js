@@ -4,17 +4,19 @@ function execute(url) {
     try {
         url = url.replace(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img, BASE_URL);
 
-        let response = fetch(url);
+        // let response = fetch(url);
 
-        let doc;
-        if (response.ok) {
-            doc = response.html('gbk');
-        } else if (response.status == 403) {
-            var browser = Engine.newBrowser();
-            doc = browser.launch(url, 4000);
-        } else {
-            return Response.success(`fetch ${url} failed: status ${response.status}`);
-        }
+        // let doc;
+        // if (response.ok) {
+        //     doc = response.html('gbk');
+        // } else if (response.status == 403) {
+        //     var browser = Engine.newBrowser();
+        //     doc = browser.launch(url, 4000);
+        // } else {
+        //     return Response.success(`fetch ${url} failed: status ${response.status}`);
+        // }
+        var browser = Engine.newBrowser();
+        let doc = browser.launch(url, 4000);
 
         var htm = doc.select(".txtnav")
         htm.select(".contentadv").remove()
