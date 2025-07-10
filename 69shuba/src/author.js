@@ -21,20 +21,8 @@ function execute(url) {
             return Response.success(data);
         }
 
-        return Response.success([{
-            name: url + " - " + response.status,
-            link: "",
-            cover: DEFAULT_COVER,
-            description: "",
-            host: BASE_URL
-        }]);
+        return Response.error(`fetch ${url} failed: status ${response.status}`);
     } catch (e) {
-        return Response.success([{
-            name: url + " - " + e.message,
-            link: "",
-            cover: DEFAULT_COVER,
-            description: "",
-            host: BASE_URL
-        }]);
+        return Response.error(`fetch ${url} failed: ${e.message}`);
     }
 }

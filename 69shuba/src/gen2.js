@@ -23,14 +23,9 @@ function execute(url, page) {
             var next = parseInt(page, 10) + 1;
             return Response.success(data, next.toString());
         }
-        return null;
+
+        Response.error(`fetch ${url} failed: status ${response.status}`);
     } catch (e) {
-        return success({
-            name: url,
-            link: "",
-            cover: DEFAULT_COVER,
-            description: "",
-            host: BASE_URL
-        }, 10);
+        Response.error(`fetch ${url} failed: ${e.message}`);
     }
 }

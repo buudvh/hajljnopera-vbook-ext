@@ -40,5 +40,6 @@ function execute(key, page) {
 
         return Response.success(data, next.toString());
     }
-    return null;
+
+    return Response.error(`fetch ${url} failed: status ${response.status}`);
 }
