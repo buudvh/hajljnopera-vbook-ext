@@ -1,4 +1,5 @@
 load('config.js');
+load('libs.js');
 function execute(bookid, next) {
     if (!next) next = "0"
     try {
@@ -25,7 +26,7 @@ function execute(bookid, next) {
             listCmtElm.forEach(function (elm) {
                 comments.push({
                     name: elm.select('div.sec-bot a').text(),
-                    content: elm.select('div.sec-top').text(),
+                    content: cleanHtml(elm.select('div.sec-top').html()),
                 });
             });
 
