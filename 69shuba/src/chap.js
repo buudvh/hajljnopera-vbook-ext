@@ -7,7 +7,7 @@ function execute(url) {
         let response = fetch(url);
 
         if (!response.ok) {
-            return Response.success(`fetch ${url} failed: status ${response.status}`);
+            return Response.error(`fetch ${url} failed: status ${response.status}`);
         }
 
         let doc = response.html('gbk');
@@ -25,6 +25,6 @@ function execute(url) {
 
         return Response.success(htm);
     } catch (error) {
-        return Response.success(`fetch ${url} failed: ${error.message}`);
+        return Response.error(`fetch ${url} failed: ${error.message}`);
     }
 }
