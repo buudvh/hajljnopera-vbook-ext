@@ -78,7 +78,7 @@ function execute(url) {
 }
 
 function getTags(doc) {
-    return doc.select("#div-book-infor").attr('tags') || '';
+    return doc.select("#div-book-infor").attr('tagsData') || '';
 }
 
 function createDocInforDiv() {
