@@ -25,7 +25,7 @@ function execute(url) {
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
-        browser.callJs(createDocInforDiv, 500); // Gọi Javascript function trên trang với waitTime, trả về Document object
+        let strTags = browser.callJs(createDocInforDiv, 500); // Gọi Javascript function trên trang với waitTime, trả về Document object
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
@@ -36,16 +36,11 @@ function execute(url) {
             script: "classify.js"
         });
 
-        if(doc.select("#div-book-infor")){
-            let tags = getTags(doc).split("|");
-            tags.forEach(function (tag) {
-                genres.push({
-                    title: tag,
-                    input: `/${tag}/{0}/`, 
-                    script: "gen2.js"
-                });
-            })
-        }
+        genres.push({
+            title: strTags,
+            input: `/${strTags}/{0}/`, 
+            script: "gen2.js"
+        });
 
         let comments = [];
 
@@ -81,11 +76,8 @@ function getTags(doc) {
     return doc.select("#div-book-infor").attr('tagsData') || '';
 }
 
-function createDocInforDiv() {
-    const divTag = document.createElement('div');
-    divTag.setAttribute('tagsData', bookinfo.tags)
-    divTag.id = "div-book-infor"
-    document.body.append(divTag)
+function getTags() {
+    return bookinfo.tags
 }
 
 function encodeAuhtorUrl(url) {

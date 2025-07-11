@@ -7,20 +7,15 @@ function execute(url) {
         let response = fetch(url);
 
         let doc;
-        // if (response.ok) {
-        //     doc = response.html('gbk');
-        // } else if (response.status == 403) {
-        //     var browser = Engine.newBrowser(); // Khởi tạo browser
-        //     doc = browser.launch(url, 4000);
-        //     browser.close();
-        // } else {
-        //     return Response.error(`fetch ${url} failed: status ${response.status}`);
-        // }
-        var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
-        doc = browser.callJs(testJS, 500); // Gọi Javascript function trên trang với waitTime, trả về Document object
-        // doc = browser.html(); // Trả về Document object của trang web
-        browser.close();
+        if (response.ok) {
+            doc = response.html('gbk');
+        } else if (response.status == 403) {
+            var browser = Engine.newBrowser(); // Khởi tạo browser
+            doc = browser.launch(url, 4000);
+            browser.close();
+        } else {
+            return Response.error(`fetch ${url} failed: status ${response.status}`);
+        }
 
         var htm = doc.select(".txtnav")
         htm.select(".contentadv").remove()
@@ -38,8 +33,4 @@ function execute(url) {
     } catch (error) {
         return Response.error(`fetch ${url} failed: ${error.message}`);
     }
-}
-
-function testJS(){
-    document.body.innerHTML = "<div class='txtnav'>Hello, World!</div>";
 }
