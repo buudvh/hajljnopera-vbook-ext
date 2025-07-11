@@ -1,5 +1,7 @@
 load('libs.js');
 load('config.js');
+load('common.js');
+
 function execute(key, page) {
     let arrKey = key.split("&");
     if (!page) page = '1';
@@ -7,19 +9,12 @@ function execute(key, page) {
     if (arrKey.length == 2) {
         sort = arrKey[1];
     }
-    
+
     let url = `${STVHOST}/io/searchtp/searchBooks/?findinname=${encodeURIComponent(arrKey[0])}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
-    if(key.startsWith("find=")){
-        url = `${STVHOST}/io/searchtp/searchBooks/?find=${encodeURIComponent(arrKey[0].replace("find=",""))}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
+    if (key.startsWith("find=")) {
+        url = `${STVHOST}/io/searchtp/searchBooks/?find=${encodeURIComponent(arrKey[0].replace("find=", ""))}&sort=${sort}&host=69shu&minc=0&tag=&p=${page}`;
     }
     let response = fetch(url);
-    function toCapitalize(sentence) {
-        const words = sentence.split(" ");
-
-        return words.map((word) => {
-            return word[0].toUpperCase() + word.substring(1);
-        }).join(" ");
-    }
 
     if (response.ok) {
         let doc = response.html()

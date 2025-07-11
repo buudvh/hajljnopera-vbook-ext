@@ -1,5 +1,7 @@
 load('libs.js');
 load('config.js');
+load('common.js');
+
 function execute(tag, page) {
     try {
         let arrTag = tag.split("&");
@@ -10,13 +12,6 @@ function execute(tag, page) {
         }
         let url = `${STVHOST}/io/searchtp/searchBooks/?find=&tag=${arrTag[0]}&sort=${sort}&host=69shu&minc=0&p=${page}`;
         let response = fetch(url);
-        function toCapitalize(sentence) {
-            const words = sentence.split(" ");
-
-            return words.map((word) => {
-                return word[0].toUpperCase() + word.substring(1);
-            }).join(" ");
-        }
 
         if (response.ok) {
             let doc = response.html()

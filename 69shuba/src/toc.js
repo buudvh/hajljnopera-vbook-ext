@@ -3,14 +3,9 @@ load('config.js');
 
 function execute(url) {
     try {
-        let book_id = "";
-        if (url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1) {
-            book_id = url.match(/\/(\d+)\/?$/)[1];
-        } else {
-            const regex = /\/(\d+)\.htm/;
-            const match = url.match(regex);
-            book_id = match[1];
-        }
+        let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        const book_id = extractBookId(url, isSTV);
+
         let response = fetch(`${BASE_URL}/book/${book_id}/`);
         if (response.ok) {
             let doc = response.html('gbk');
