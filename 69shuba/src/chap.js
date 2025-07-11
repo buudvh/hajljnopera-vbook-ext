@@ -6,11 +6,18 @@ function execute(url) {
 
         let response = fetch(url);
 
-        if (!response.ok) {
+        let doc;
+        if (response.ok) {
+            doc = response.html('gbk');
+        } else if (response.status == 403) {
+            var browser = Engine.newBrowser(); // Khởi tạo browser
+            browser.setUserAgent(UserAgent.android()); // Tùy chỉnh user agent
+            doc = browser.launch(url, 4000);
+            browser.close();
+        } else {
             return Response.error(`fetch ${url} failed: status ${response.status}`);
         }
 
-        let doc = response.html('gbk');
         var htm = doc.select(".txtnav")
         htm.select(".contentadv").remove()
         htm.select(".bottom-ad").remove()
