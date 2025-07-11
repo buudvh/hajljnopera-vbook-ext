@@ -24,7 +24,7 @@ function execute(url) {
         // let doc = response.html('gbk');
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 3000); // Mở trang web với timeout, trả về Document object
+        browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
         let doc = browser.callJs(createDocInforDiv, 1000); // Gọi Javascript function trên trang với waitTime, trả về Document object
         browser.close();
 
@@ -35,6 +35,7 @@ function execute(url) {
             script: "classify.js"
         });
 
+        if(!doc.select("#div-book-infor")) return Response.error(`fetch ${url} failed: no book-infor tag`);
         let objBookInfor = getBookInfor(doc);
         if (objBookInfor?.tags) {
             tags = objBookInfor.tags.split("|")
