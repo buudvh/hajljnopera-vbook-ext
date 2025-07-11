@@ -77,7 +77,7 @@ function buildGenres(doc) {
     return genres;
 }
 
-function encodeAuhtorUrl(url) {
+function encodeAuthorUrl(url) {
     if (!url) return "";
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
     let author = GBK.encode(url.replace(baseUrl, ""));
