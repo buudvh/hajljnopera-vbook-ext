@@ -25,7 +25,7 @@ function execute(url) {
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
-        let doc = browser.callJs(createDocInforDiv, 1000); // Gọi Javascript function trên trang với waitTime, trả về Document object
+        let doc = browser.callJs(createDocInforDiv, 500); // Gọi Javascript function trên trang với waitTime, trả về Document object
         browser.close();
 
         let genres = [];
@@ -35,10 +35,8 @@ function execute(url) {
             script: "classify.js"
         });
 
-        if(!doc.select("#div-book-infor")) return Response.error(`fetch ${url} failed: no book-infor tag`);
-        let objBookInfor = getBookInfor(doc);
-        if (objBookInfor?.tags) {
-            tags = objBookInfor.tags.split("|")
+        if(doc.select("#div-book-infor")){
+            let tags = getTags(doc).split("|");
             tags.forEach(function (tag) {
                 genres.push({
                     title: tag,
@@ -78,13 +76,13 @@ function execute(url) {
     }
 }
 
-function getBookInfor(doc) {
-    return JSON.parse(doc.select("#div-book-infor").attr('book-infor'))
+function getTags(doc) {
+    return doc.select("#div-book-infor").attr('tags') || '';
 }
 
 function createDocInforDiv() {
     const divTag = document.createElement('div');
-    divTag.setAttribute('book-infor', JSON.stringify(bookinfo))
+    divTag.setAttribute('tagsData', bookinfo.tags)
     divTag.id = "div-book-infor"
     document.body.append(divTag)
 }
