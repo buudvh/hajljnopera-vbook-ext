@@ -24,9 +24,9 @@ function execute(url) {
         // let doc = response.html('gbk');
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.setUserAgent(UserAgent.android()); // Tùy chỉnh user agent
         browser.launch(url, 3000); // Mở trang web với timeout, trả về Document object
         let doc = browser.callJs(createDocInforDiv, 1000); // Gọi Javascript function trên trang với waitTime, trả về Document object
+        browser.close();
 
         let genres = [];
         genres.push({

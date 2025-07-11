@@ -11,7 +11,6 @@ function execute(url) {
             doc = response.html('gbk');
         } else if (response.status == 403) {
             var browser = Engine.newBrowser(); // Khởi tạo browser
-            browser.setUserAgent(UserAgent.android()); // Tùy chỉnh user agent
             doc = browser.launch(url, 4000);
             browser.close();
         } else {
