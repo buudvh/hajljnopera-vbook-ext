@@ -31,7 +31,7 @@ function execute(url) {
 
         let tags = doc.select("#div-book-infor").attr('tagsData').split("|");
         tags.forEach(function (tag) {
-            if (tag) {
+            if (tag != '') {
                 genres.push({
                     title: tag,
                     input: `/${tag}/{0}/`,
