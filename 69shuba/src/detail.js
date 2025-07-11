@@ -16,13 +16,6 @@ function execute(url) {
             bookid = match[1];
         }
 
-        // let response = fetch(url);
-        // if (!response.ok) {
-        //     return Response.error(`fetch ${url} failed: status ${response.status}`);
-        // }
-
-        // let doc = response.html('gbk');
-
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
         browser.callJs("const divTag = document.createElement('div'); divTag.setAttribute('tagsData', bookinfo.tags); divTag.id = 'div-book-infor'; document.body.append(divTag);", 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
@@ -38,11 +31,13 @@ function execute(url) {
 
         let tags = doc.select("#div-book-infor").attr('tagsData').split("|");
         tags.forEach(function (tag) {
-            genres.push({
-                title: tag,
-                input: `/${tag}/{0}/`, 
-                script: "gen2.js"
-            });
+            if (tag) {
+                genres.push({
+                    title: tag,
+                    input: `/${tag}/{0}/`,
+                    script: "gen2.js"
+                });
+            }
         })
 
         let comments = [];
