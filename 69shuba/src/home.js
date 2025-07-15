@@ -1,18 +1,16 @@
 function execute() {
     return Response.success([
-        { title: "诸天流", input: "/诸天流/{0}/", script: "gen2.js" },
-        { title: "无限流", input: "/无限流/{0}/", script: "gen2.js" },
-
-        {title: "诸天流 - 新入库", input: "chư thiên&new", script: "search.js"},
+        
         {title: "诸天流 - 新更新", input: "chư thiên&update", script: "search.js"},
-        {title: "诸天流 - 总阅读量", input: "chư thiên&view", script: "search.js"},
-        {title: "诸天流 - 本周阅读量", input: "chư thiên&viewweek", script: "search.js"},
         {title: "诸天流 - 今日阅读量", input: "chư thiên&viewday", script: "search.js"},
+        {title: "诸天流 - 本周阅读量", input: "chư thiên&viewweek", script: "search.js"},
+        {title: "诸天流 - 总阅读量", input: "chư thiên&view", script: "search.js"},
+        {title: "诸天流 - 新入库", input: "chư thiên&new", script: "search.js"},
         {title: "诸天流 - 点赞数", input: "chư thiên&like", script: "search.js"},
         {title: "诸天流 - 关注数", input: "chư thiên&following", script: "search.js"},
         {title: "诸天流 - 收藏数", input: "chư thiên&bookmarked", script: "search.js"},
-
-        {title: "聊天群 - 新入库", input: "chat group&new", script: "search.js"},
+        { title: "诸天流", input: "/诸天流/{0}/", script: "gen2.js" },
+        { title: "无限流", input: "/无限流/{0}/", script: "gen2.js" },
 
         {title: "官场职场 - 新更新", input: "quantruongcholamviec,", script: "tag.js"},
         {title: "武侠 - 新更新", input: "vuhiep,", script: "tag.js"},

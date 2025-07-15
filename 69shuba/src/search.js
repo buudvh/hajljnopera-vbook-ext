@@ -5,7 +5,7 @@ load('common.js');
 function execute(key, page) {
     let arrKey = key.split("&");
     if (!page) page = '1';
-    let sort = 'viewday';
+    let sort = 'update';
     if (arrKey.length == 2) {
         sort = arrKey[1];
     }
