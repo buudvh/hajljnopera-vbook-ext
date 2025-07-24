@@ -10,7 +10,7 @@ function execute(url) {
         url = buildFinalUrl(bookid);
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
+        browser.launch(url, 7000); // Mở trang web với timeout, trả về Document object
 
         browser.callJs(`
             const div = document.createElement('div');
@@ -21,6 +21,8 @@ function execute(url) {
 
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
+
+        if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
 
         const genres = buildGenres(doc);
         const comments = [{
