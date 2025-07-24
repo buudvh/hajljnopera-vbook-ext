@@ -9,7 +9,7 @@ function execute(url) {
         const bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);
 
-        const script = `
+        const script_run = `
                 const div = document.createElement('div');
                 div.id = 'div-book-infor';
                 div.setAttribute('tagsData', bookinfo?.tags || '');
@@ -18,12 +18,12 @@ function execute(url) {
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(url, 5000); // Mở trang web với timeout, trả về Document object
-        browser.callJs(script, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
+        browser.callJs(script_run, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
 
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
-        if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
+        if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(`Lỗi ${url}`);
 
         const genres = buildGenres(doc);
         const comments = [{
