@@ -7,27 +7,26 @@ function execute(url) {
         let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
         const book_id = extractBookId(url, isSTV);
 
-        let response = fetch(`${BASE_URL}/book/${book_id}/`);
-        if (response.ok) {
-            let doc = response.html('gbk');
+        var browser = Engine.newBrowser(); // Khởi tạo browser
+        browser.launch(`${BASE_URL}/book/${book_id}/`, 4000);
+        let doc = browser.html(); // Trả về Document object của trang web
+        browser.close();
 
-            var data = [];
-            var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
+        var data = [];
+        var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
 
-            elems.forEach(function (e) {
-                data.push({
-                    name: formatName(e.text()),
-                    url: e.attr('href'),
-                    host: BASE_URL,
-                    id: e.attr('data-num')
-                })
-            });
+        elems.forEach(function (e) {
+            data.push({
+                name: formatName(e.text()),
+                url: e.attr('href'),
+                host: BASE_URL,
+                id: e.attr('data-num')
+            })
+        });
 
-            data = data.reverse();
+        data = data.reverse();
 
-            return Response.success(data);
-        }
-        return Response.error(`fetch ${url} failed: status ${response.status}`);
+        return Response.success(data);
     } catch (error) {
         return Response.error(`fetch ${url} failed: ${error.message}`);
     }
