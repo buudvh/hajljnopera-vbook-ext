@@ -24,7 +24,7 @@ function execute(url) {
             })
         });
 
-        data = data.reverse();
+        // data = data.reverse();
 
         return Response.success(data);
     } catch (error) {
