@@ -20,11 +20,11 @@ function execute(url) {
             `;
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 4000); // Mở trang web với timeout, trả về Document object
+        browser.launch(url, 5000); // Mở trang web với timeout, trả về Document object
         browser.callJs(script, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
 
         let doc = browser.html(); // Trả về Document object của trang web
-        while ($.Q(doc, 'div.booknav2 > h1 > a')) {
+        while (!$.Q(doc, 'div.booknav2 > h1 > a')) {
             if (tryCnt > MAX_TRY) {
                 Response.error(`cannot get content from ${url}`);
             }
