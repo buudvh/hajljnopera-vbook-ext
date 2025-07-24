@@ -20,6 +20,9 @@ function execute(url) {
         `, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
 
         let doc = browser.html(); // Trả về Document object của trang web
+        if (!doc) {
+            return Response.error(`fetch ${url} failed`);
+        }
         browser.close();
 
         const genres = buildGenres(doc);
