@@ -8,14 +8,12 @@ function execute(url) {
         const book_id = extractBookId(url, isSTV);
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(`${BASE_URL}/book/${book_id}/`, 5000);
+        browser.launch(`${BASE_URL}/book/${book_id}/`, 4000);
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
         var data = [];
         var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
-
-        if (!elems.length) return Response.error(url);
 
         elems.forEach(function (e) {
             data.push({
