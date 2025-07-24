@@ -20,8 +20,15 @@ function execute(url) {
         `, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
 
         let doc = browser.html(); // Trả về Document object của trang web
-        if (!doc) {
-            return Response.error(`fetch ${url} failed`);
+        if ($.Q(doc, 'div.booknav2 > h1 > a')) {
+            return Response.success({
+                name: "",
+                cover: "",
+                author: "",
+                description: "",
+                detail: "",
+                host: BASE_URL
+            });
         }
         browser.close();
 
