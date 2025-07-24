@@ -7,9 +7,23 @@ function execute(url) {
         let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
         const book_id = extractBookId(url, isSTV);
 
+        var tryCnt = 0;
+        const MAX_TRY = 4;
+
         var browser = Engine.newBrowser(); // Khởi tạo browser
         browser.launch(`${BASE_URL}/book/${book_id}/`, 4000);
         let doc = browser.html(); // Trả về Document object của trang web
+
+        while ($.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)') && $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)')?.length > 0) {
+            if (tryCnt > MAX_TRY) {
+                Response.error(`cannot get content from ${url}`);
+            }
+            tryCnt = tryCnt + 1;
+            browser.launch(`${BASE_URL}/book/${book_id}/`, 4000 + tryCnt * 1000);
+            browser.callJs(script, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
+            doc = browser.html();
+        }
+
         browser.close();
 
         var data = [];
