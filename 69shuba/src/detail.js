@@ -9,9 +9,6 @@ function execute(url) {
         const bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);
 
-        var tryCnt = 0;
-        const MAX_TRY = 4;
-
         const script = `
                 const div = document.createElement('div');
                 div.id = 'div-book-infor';
@@ -24,16 +21,9 @@ function execute(url) {
         browser.callJs(script, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
 
         let doc = browser.html(); // Trả về Document object của trang web
-        while (!$.Q(doc, 'div.booknav2 > h1 > a')) {
-            if (tryCnt > MAX_TRY) {
-                Response.error(`cannot get content from ${url}`);
-            }
-            tryCnt = tryCnt + 1;
-            browser.launch(url, 4000 + tryCnt * 1000);
-            browser.callJs(script, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
-            doc = browser.html();
-        }
         browser.close();
+
+        if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
 
         const genres = buildGenres(doc);
         const comments = [{
