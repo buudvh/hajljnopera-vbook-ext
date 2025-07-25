@@ -22,7 +22,7 @@ function execute(url) {
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
-        // if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
+        if (text(doc, 'div.booknav2 > h1 > a') == '') return trySTV(url);
 
         const genres = buildGenres(doc);
         const comments = [{
@@ -84,4 +84,28 @@ function encodeAuthorUrl(url) {
     const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
     let author = GBK.encode(url.replace(baseUrl, ""));
     return baseUrl + author;
+}
+
+function trySTV(url) {
+    try {
+        let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        const bookid = extractBookId(url, isSTV);
+        url = `${STVHOST}/truyen/69shu/1/${bookid}/`;
+        let response = fetch(url);
+
+        if (!response.ok) Response.error(`fail to fetch: status ${response.status}`);
+
+        let doc = response.html()
+        
+        return Response.success({
+            name: text(doc, '#oriname'),
+            cover: `https://static.69shuba.com/files/article/image/${bookid.slice(0, bookid.length - 3)}/${bookid}/${bookid}s.jpg`,
+            author: text(doc, 'h2'),
+            description: $.QA(doc, '#book-sumary p', { m: x => x.text(), j: '<br>' }),
+            detail: `GET FROM STV ID: ${bookid}`,
+            host: BASE_URL,
+        });
+    } catch (error) {
+        throw error;
+    }
 }
