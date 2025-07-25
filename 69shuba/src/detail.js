@@ -117,7 +117,7 @@ function trySTV(url) {
             detail: 'GET FROM STV ID: ' + bookid,
             host: BASE_URL,
             suggests: [{
-                title: "同作者: " + authorName,
+                title: "同作者",
                 input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author=' + authorName),
                 script: "author.js"
             }],
