@@ -10,7 +10,7 @@ function execute(url) {
         url = buildFinalUrl(bookid);
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 7000); // Mở trang web với timeout
+        browser.launch(url, 5000); // Mở trang web với timeout
 
         browser.callJs(
             "var div = document.createElement('div');" +
