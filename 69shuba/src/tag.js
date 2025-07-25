@@ -10,7 +10,8 @@ function execute(tag, page) {
         if (arrTag.length == 2) {
             sort = arrTag[1];
         }
-        let url = `${STVHOST}/io/searchtp/searchBooks/?find=&tag=${arrTag[0]}&sort=${sort}&host=69shu&minc=0&p=${page}`;
+        // let url = `${STVHOST}/io/searchtp/searchBooks/?find=&tag=${arrTag[0]}&sort=${sort}&host=69shu&minc=0&p=${page}`;
+        var url = STVHOST + '/io/searchtp/searchBooks/?find=&tag=' + arrTag[0] + '&sort=' + sort + '&host=69shu&minc=0&p=' + page;
         let response = fetch(url);
 
         if (response.ok) {
@@ -23,8 +24,8 @@ function execute(tag, page) {
                 let bookid = stv_story_link.split("/")[4];
                 data.push({
                     name: toCapitalize(e.select(".searchbooktitle").first().text()),
-                    link: `${BASE_URL}/book/${bookid}.htm`,
-                    cover: `https://static.69shuba.com/files/article/image/${bookid.slice(0, bookid.length - 3)}/${bookid}/${bookid}s.jpg`,
+                    link: BASE_URL + '/book/' + bookid + '.htm',
+                    cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
                     description: e.select(" div > span.searchtag").last().text(),
                     host: ""
                 })
@@ -33,8 +34,8 @@ function execute(tag, page) {
             return Response.success(data, next.toString());
         }
 
-        return Response.error(`fetch ${url} failed: status ${response.status}`);
+        return Response.error('fetch ' + url + ' failed: status ' + response.status);
     } catch (error) {
-        return Response.error(`fetch ${url} failed: ${error.message}`);
+        return Response.error('fetch ' + url + ' failed: ' + error.message);
     }
 }

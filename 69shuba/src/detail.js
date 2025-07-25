@@ -5,27 +5,28 @@ load('common.js');
 
 function execute(url) {
     try {
-        let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
-        const bookid = extractBookId(url, isSTV);
+        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var bookid = extractBookId(url, isSTV);
         url = buildFinalUrl(bookid);
 
         var browser = Engine.newBrowser(); // Khởi tạo browser
-        browser.launch(url, 7000); // Mở trang web với timeout, trả về Document object
+        browser.launch(url, 7000); // Mở trang web với timeout
 
-        browser.callJs(`
-            const div = document.createElement('div');
-            div.id = 'div-book-infor';
-            div.setAttribute('tagsData', bookinfo?.tags || '');
-            document.body.append(div);
-        `, 100); // Gọi Javascript function trên trang với waitTime, trả về Document object
+        browser.callJs(
+            "var div = document.createElement('div');" +
+            "div.id = 'div-book-infor';" +
+            "div.setAttribute('tagsData', (typeof bookinfo !== 'undefined' && bookinfo && bookinfo.tags) ? bookinfo.tags : '');" +
+            "document.body.appendChild(div);",
+            100
+        );
 
-        let doc = browser.html(); // Trả về Document object của trang web
+        var doc = browser.html();
         browser.close();
 
-        if (text(doc, 'div.booknav2 > h1 > a') == '') return trySTV(url);
+        if (text(doc, 'div.booknav2 > h1 > a') === '') return trySTV(url);
 
-        const genres = buildGenres(doc);
-        const comments = [{
+        var genres = buildGenres(doc);
+        var comments = [{
             title: "评论",
             input: bookid,
             script: "comment.js"
@@ -33,77 +34,80 @@ function execute(url) {
 
         return Response.success({
             name: text(doc, 'div.booknav2 > h1 > a'),
-            cover: doc.select("div.bookimg2 > img")?.attr("src") ?? DEFAULT_COVER,
+            cover: doc.select("div.bookimg2 > img") && doc.select("div.bookimg2 > img").attr("src") || DEFAULT_COVER,
             author: text(doc, 'div.booknav2 > p:nth-child(2) > a'),
-            description: $.Q(doc, 'div.navtxt > p')?.html() ?? '',
-            detail: $.QA(doc, 'div.booknav2 p', { m: x => x.text(), j: '<br>' }) + `<br>书籍编号: ${bookid}<br>`,
+            description: $.Q(doc, 'div.navtxt > p') ? $.Q(doc, 'div.navtxt > p').html() : '',
+            detail: $.QA(doc, 'div.booknav2 p', { m: function (x) { return x.text(); }, j: '<br>' }) + '<br>书籍编号: ' + bookid + '<br>',
             host: BASE_URL,
             suggests: [{
                 title: "同作者",
-                input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a')?.attr("href")),
+                input: encodeAuthorUrl($.Q(doc, 'div.booknav2 > p:nth-child(2) > a') ? $.Q(doc, 'div.booknav2 > p:nth-child(2) > a').attr("href") : ''),
                 script: "author.js"
             }],
-            genres,
-            comments
+            genres: genres,
+            comments: comments
         });
     } catch (error) {
-        return Response.error(`fetch ${url} failed: ${error.message}`);
+        return Response.error('fetch ' + url + ' failed: ' + error.message);
     }
 }
 
 function buildFinalUrl(bookid) {
-    return `${BASE_URL}/book/${bookid}.htm`;
+    return BASE_URL + '/book/' + bookid + '.htm';
 }
 
 function buildGenres(doc) {
-    const genres = [];
+    var genres = [];
 
-    const mainGenreEl = $.Q(doc, 'div.booknav2 > p:nth-child(3) > a');
+    var mainGenreEl = $.Q(doc, 'div.booknav2 > p:nth-child(3) > a');
     genres.push({
-        title: mainGenreEl?.text()?.trim() || "没有标签",
-        input: mainGenreEl?.attr("href") ?? "https://www.69shuba.com/novels/class/0.htm",
+        title: mainGenreEl && mainGenreEl.text() ? mainGenreEl.text().trim() : "没有标签",
+        input: mainGenreEl ? mainGenreEl.attr("href") : "https://www.69shuba.com/novels/class/0.htm",
         script: "classify.js"
     });
 
-    const tagStr = doc.select("#div-book-infor")?.attr('tagsData') ?? '';
-    tagStr.split("|").forEach(tag => {
+    var tagStr = doc.select("#div-book-infor") && doc.select("#div-book-infor").attr('tagsData') || '';
+    var tags = tagStr.split("|");
+
+    for (var i = 0; i < tags.length; i++) {
+        var tag = tags[i];
         if (tag) {
             genres.push({
                 title: tag,
-                input: `/${tag}/{0}/`,
+                input: '/' + tag + '/{0}/',
                 script: "gen2.js"
             });
         }
-    });
+    }
 
     return genres;
 }
 
 function encodeAuthorUrl(url) {
     if (!url) return "";
-    const baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
-    let author = GBK.encode(url.replace(baseUrl, ""));
+    var baseUrl = "https://www.69shuba.com/modules/article/author.php?author=";
+    var author = GBK.encode(url.replace(baseUrl, ""));
     return baseUrl + author;
 }
 
 function trySTV(url) {
     try {
-        let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
-        const bookid = extractBookId(url, isSTV);
-        url = `${STVHOST}/truyen/69shu/1/${bookid}/`;
-        let response = fetch(url);
+        var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+        var bookid = extractBookId(url, isSTV);
+        url = STVHOST + '/truyen/69shu/1/' + bookid + '/';
+        var response = fetch(url);
 
-        if (!response.ok) Response.error(`fail to fetch: status ${response.status}`);
+        if (!response.ok) return Response.error('fail to fetch: status ' + response.status);
 
-        let doc = response.html()
-        
+        var doc = response.html();
+
         return Response.success({
             name: text(doc, '#oriname'),
-            cover: `https://static.69shuba.com/files/article/image/${bookid.slice(0, bookid.length - 3)}/${bookid}/${bookid}s.jpg`,
+            cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
             author: text(doc, 'h2'),
-            description: $.QA(doc, '#book-sumary p', { m: x => x.text(), j: '<br>' }),
-            detail: `GET FROM STV ID: ${bookid}`,
-            host: BASE_URL,
+            description: $.QA(doc, '#book-sumary p', { m: function (x) { return x.text(); }, j: '<br>' }),
+            detail: 'GET FROM STV ID: ' + bookid,
+            host: BASE_URL
         });
     } catch (error) {
         throw error;
