@@ -22,7 +22,7 @@ function execute(url) {
         let doc = browser.html(); // Trả về Document object của trang web
         browser.close();
 
-        if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
+        // if (text(doc, 'div.booknav2 > h1 > a') == '') return Response.error(url);
 
         const genres = buildGenres(doc);
         const comments = [{
