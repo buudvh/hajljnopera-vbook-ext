@@ -74,6 +74,7 @@ function trySTV(url) {
             }]);
         }
 
+        content = response.text();
         var objData = JSON.parse(response.text());
 
         if (objData.code != '1') {
