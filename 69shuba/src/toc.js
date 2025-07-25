@@ -55,7 +55,6 @@ function formatName(name) {
 }
 
 function trySTV(url) {
-    var content = "";
     try {
         var result = [];
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
@@ -72,26 +71,11 @@ function trySTV(url) {
             }
         });
 
-        if (!response.ok) {
-            return Response.success([{
-                name: 'fetch ' + url + ' failed: status ' + response.status,
-                url: "",
-                host: "",
-                id: ""
-            }]);
-        }
+        if (!response.ok) Response.error("Error try STV: status" + response.status);
 
-        content = response.text();
         var objData = JSON.parse(response.text());
 
-        if (objData.code != '1') {
-            return Response.success([{
-                name: 'fetch ' + url + ' failed: x.code = ' + objData.code,
-                url: "",
-                host: "",
-                id: ""
-            }]);
-        }
+        if (objData.code != '1') Response.error("Error try STV: x.code" + objData.code);
 
         var chapters = objData.data.split("-//-");
 
@@ -101,7 +85,7 @@ function trySTV(url) {
             var chapterName = parts[2];
 
             result.push({
-                name: chapterName.trim().replace(/([\t\n]+|<br>| )/g, ""),
+                name: chapterName.trim().replace(/([\t\n]+|<br>| )/g, "").replace(/([\t\n]+|<br>|&nbsp;)/g,"").replace(/Thứ ([\d\,]+) chương/,"Chương $1:"),
                 url: BASE_URL + '/txt/' + book_id + '/' + chapterId,
                 host: "",
                 id: chapterId
@@ -110,11 +94,6 @@ function trySTV(url) {
 
         return Response.success(result);
     } catch (error) {
-        return Response.success([{
-            name: content,
-            url: "",
-            host: "",
-            id: ""
-        }]);
+        return Response.error("Error try STV: " + error.message);
     }
 }
