@@ -129,7 +129,7 @@ function trySTV(url) {
 }
 
 function getAuhtorNameSTV(doc) {
-    var onclickAttr = doc.select(".cap")[1].attr("onclick");
+    var onclickAttr = doc.select("i.cap").first().attr("onclick");
     var match = onclickAttr.match(/findinname=([^']+)/);
     return match ? decodeURIComponent(match[1]) : '';
 }
