@@ -101,13 +101,26 @@ function trySTV(url) {
 
         var doc = response.html();
 
+        var comments = [{
+            title: "评论",
+            input: bookid,
+            script: "comment.js"
+        }];
+
         return Response.success({
             name: text(doc, '#oriname'),
             cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
             author: text(doc, 'h2'),
             description: $.QA(doc, '#book-sumary p', { m: function (x) { return x.text(); }, j: '<br>' }),
             detail: 'GET FROM STV ID: ' + bookid,
-            host: BASE_URL
+            host: BASE_URL,
+            suggests: [{
+                title: "同作者",
+                input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author='
+                    + doc.select("i.cap").attr("onclick").replace("location='/?find=&findinname='", "")),
+                script: "author.js"
+            }],
+            comments: comments
         });
     } catch (error) {
         throw error;
