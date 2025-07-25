@@ -107,6 +107,8 @@ function trySTV(url) {
             script: "comment.js"
         }];
 
+        var authorName = getAuhtorNameSTV(doc);
+
         return Response.success({
             name: text(doc, '#oriname'),
             cover: 'https://static.69shuba.com/files/article/image/' + bookid.slice(0, bookid.length - 3) + '/' + bookid + '/' + bookid + 's.jpg',
@@ -115,9 +117,8 @@ function trySTV(url) {
             detail: 'GET FROM STV ID: ' + bookid,
             host: BASE_URL,
             suggests: [{
-                title: "同作者",
-                input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author='
-                    + doc.select("i.cap").attr("onclick").replace("location='/?find=&findinname='", "")),
+                title: "同作者: " + authorName,
+                input: encodeAuthorUrl('https://www.69shuba.com/modules/article/author.php?author=' + authorName),
                 script: "author.js"
             }],
             comments: comments
@@ -125,4 +126,10 @@ function trySTV(url) {
     } catch (error) {
         throw error;
     }
+}
+
+function getAuhtorNameSTV(doc) {
+    var onclickAttr = doc.select(".cap")[1].attr("onclick");
+    var match = onclickAttr.match(/findinname=([^']+)/);
+    return match ? decodeURIComponent(match[1]) : '';
 }
