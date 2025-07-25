@@ -15,7 +15,7 @@ function execute(url) {
         var data = [];
         var elems = $.QA(doc, 'div.catalog > ul > li > a:not(#bookcase)');
 
-        if (!elems.length) return Response.error(url);
+        if (!elems.length) return trySTV(url);
 
         elems.forEach(function (e) {
             data.push({
@@ -51,4 +51,37 @@ function formatName(name) {
     result = result.replace(/【.*$/, '');
 
     return result.trim();
+}
+
+function trySTV(url) {
+    let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
+    const book_id = extractBookId(url, isSTV);
+    url = `${STVHOST}/index.php?ngmar=chapterlist&h=69shu&bookid=${book_id}&sajax=getchapterlist`;
+    let response = fetch(url);
+
+    if (!response.ok) return Response.error(`fetch ${url} failed: status ${response.status}`);
+
+    let objData = JSON.parse(response.text())
+
+    if (objData.code != '1') return Response.error(`fetch ${url} failed: x.code = ${objData.code}`);
+
+    const chapters = objData.data.split("-//-");
+    const result = [];
+
+    for (let i = 0; i < chapters.length; i++) {
+        const [_, chapterId, chapterName] = chapters[i].split("-/-");
+        result.push({
+            chapterId: parseInt(chapterId),
+            chapterName: chapterName.trim().replace(/([\t\n]+|<br>| )/g, "")
+        });
+
+        result.push({
+            name: chapterName.trim().replace(/([\t\n]+|<br>| )/g, ""),
+            url: `${BASE_URL}/txt/${book_id}/${chapterId}`,
+            host: ``,
+            id: chapterId
+        })
+    }
+
+    return result;
 }
