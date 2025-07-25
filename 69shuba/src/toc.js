@@ -54,19 +54,31 @@ function formatName(name) {
 }
 
 function trySTV(url) {
+    const result = [];
     let isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
     const book_id = extractBookId(url, isSTV);
     url = `${STVHOST}/index.php?ngmar=chapterlist&h=69shu&bookid=${book_id}&sajax=getchapterlist`;
     let response = fetch(url);
 
-    if (!response.ok) return Response.error(`fetch ${url} failed: status ${response.status}`);
+    // if (!response.ok) return Response.error(`fetch ${url} failed: status ${response.status}`);
+    if (!response.ok) return Response.success([{
+        name: `fetch ${url} failed: status ${response.status}`,
+        url: "",
+        host: "",
+        id: ""
+    }]);
+
 
     let objData = JSON.parse(response.text())
 
-    if (objData.code != '1') return Response.error(`fetch ${url} failed: x.code = ${objData.code}`);
+    if (objData.code != '1') return Response.success([{
+        name: `fetch ${url} failed: x.code = ${objData.code}`,
+        url: "",
+        host: "",
+        id: ""
+    }]);
 
     const chapters = objData.data.split("-//-");
-    const result = [];
 
     for (let i = 0; i < chapters.length; i++) {
         const [_, chapterId, chapterName] = chapters[i].split("-/-");
@@ -83,5 +95,5 @@ function trySTV(url) {
         })
     }
 
-    return result;
+    return Response.success(result);
 }
