@@ -55,6 +55,7 @@ function formatName(name) {
 }
 
 function trySTV(url) {
+    var content = "";
     try {
         var result = [];
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
@@ -102,7 +103,7 @@ function trySTV(url) {
         return Response.success(result);
     } catch (error) {
         return Response.success([{
-            name: 'fetch ' + url + ' failed: ' + error.message,
+            name: content,
             url: "",
             host: "",
             id: ""
