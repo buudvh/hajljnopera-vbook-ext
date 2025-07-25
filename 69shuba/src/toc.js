@@ -101,6 +101,11 @@ function trySTV(url) {
 
         return Response.success(result);
     } catch (error) {
-        throw error;
+        return Response.success([{
+            name: 'fetch ' + url + ' failed: ' + error.message,
+            url: "",
+            host: "",
+            id: ""
+        }]);
     }
 }
