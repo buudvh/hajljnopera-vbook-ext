@@ -61,9 +61,16 @@ function trySTV(url) {
         var isSTV = url.indexOf("sangtacviet") !== -1 || url.indexOf("14.225.254.182") !== -1;
         var book_id = extractBookId(url, isSTV);
 
-        url = STVHOST + '/index.php?ngmar=chapterlist&h=69shu&bookid=' + book_id + '&sajax=getchapterlist';
+        tryUrl = STVHOST + '/index.php?ngmar=chapterlist&h=69shu&bookid=' + book_id + '&sajax=getchapterlist';
 
-        var response = fetch(url);
+        var response = fetch(tryUrl, {
+            method: 'GET',
+            headers: {
+                'Accept': '*/*',
+                'Referer': STVHOST + "/truyen/69shu/1/" + book_id,
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+            }
+        });
 
         if (!response.ok) {
             return Response.success([{
